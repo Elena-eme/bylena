@@ -351,3 +351,334 @@ body {
     font-size: 0.72rem;
     opacity: 0.6;
 }
+
+/* ==========================================
+   CV ESPECÍFICO: HERO 100VH + CARRUSEL
+   ========================================== */
+
+.cv-page {
+    background-color: #f7f6f2;
+    color: #111111;
+}
+
+/* Hero de Pantalla Completa */
+.cv-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Ocupa exactamente el 100% del alto de la pantalla */
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    color: #ffffff;
+}
+.cv-section {
+    margin-bottom: 7rem; /* Gran separación respirada entre secciones */
+    border-top: 1px solid #111111; /* Línea divisoria superior completa */
+    padding-top: 2.5rem;
+}
+.cv-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.cv-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter:  contrast(120%);
+}
+
+.cv-hero-bg .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.cv-hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 4rem 3.5rem;
+}
+
+.cv-name {
+    font-size: 9.5rem;
+    font-weight: 100;
+    letter-spacing: -0.03em;
+    line-height: 0.9;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.cv-hero-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    padding-top: 1.2rem;
+    text-transform: uppercase;
+}
+
+/* El cuerpo del CV sube sobre la pantalla al hacer scroll */
+.cv-body-wrapper {
+    position: relative;
+    z-index: 10;
+    background-color: #f7f6f2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem 6rem;
+}
+
+/* --- Carrusel de Gustos Horizontal --- */
+.carousel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.carousel-header .section-title {
+    margin-bottom: 0;
+}
+
+.carousel-arrows {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.arrow-btn {
+    background: transparent;
+    border: 1px solid #111111;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.arrow-btn:hover {
+    background-color: #111111;
+    color: #ffffff;
+}
+
+/* Contenedor deslizante en una sola fila */
+.carousel-wrapper {
+    display: flex;
+    gap: 1.8rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 1rem 0.5rem;
+    /* Ocultar barra de scroll según navegador */
+    scrollbar-width: none; /* Firefox */
+}
+
+.carousel-wrapper::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+/* Tarjetas con efecto Hover (se agrandan) */
+.media-card {
+    flex: 0 0 160px; /* Ancho fijo para cada tarjeta */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+}
+
+.media-card img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    filter: grayscale(15%);
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), filter 0.35s ease;
+}
+
+/* Efecto Hover: Agranda la imagen */
+.media-card:hover {
+    transform: scale(1.08);
+}
+
+.media-card:hover img {
+    filter: grayscale(0%);
+}
+
+.media-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.media-sub {
+    font-size: 0.72rem;
+    opacity: 0.6;
+}
+
+/* --- Estilos para los Acordeones Desplegables --- */
+.accordion-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.accordion-header {
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 150px;
+    align-items: center;
+    padding: 1.2rem 0;
+    cursor: pointer;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    list-style: none; /* Elimina la flecha por defecto en algunos navegadores */
+}
+
+.accordion-header::-webkit-details-marker {
+    display: none;
+}
+
+.accordion-body {
+    padding: 0 0 1.2rem 50px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #444444;
+    max-width: 750px;
+}
+
+/* ==========================================
+   GALERÍA GRID EXACTA A LA REFERENCIA
+   ========================================== */
+
+
+
+.projects-page {
+    background-color: #ffffff;
+    color: #111111;
+    min-height: 100vh;
+}
+
+/* Grid de 4 columnas sin márgenes laterales, abarcando el 100% del ancho de pantalla */
+.projects-checkerboard {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 4 columnas iguales */
+    padding-top: 4rem; /* Margen para no chocar con el navbar */
+    box-sizing: border-box;
+}
+
+/* Celdas Rectangulares Grandes (Relación 3:4 como en la foto) */
+.board-card {
+    width: 100%;
+    aspect-ratio: 3 / 4; /* Formato rectangular vertical grande */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* --- TARJETAS DE TEXTO --- */
+.text-card {
+    background-color: #ffffff;
+    padding: 2rem;
+    text-align: center;
+}
+
+.card-text {
+    font-size: 1.8rem;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    color: #111111;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+/* --- TARJETAS DE IMAGEN (EFECTO TECLA 3D) --- */
+.image-card {
+    padding: 0; /* Imagenes limpias pegadas como en la foto de referencia */
+}
+
+.key-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-decoration: none;
+    overflow: hidden;
+    background-color: #f2f1ed;
+    
+    /* Sombra inicial en relieve (Efecto Tecla) */
+    box-shadow: 
+        0px 6px 15px rgba(0, 0, 0, 0.08),
+        inset 0px 1px 1px rgba(255, 255, 255, 0.6);
+        
+    transform: translateY(0);
+    transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1), 
+                box-shadow 0.2s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.key-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+/* Título flotante encima de la imagen al hacer Hover */
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    padding: 1rem;
+}
+
+.overlay-text {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* HOVER: Se hunde hacia adentro como si presionases una tecla física */
+.key-card:hover {
+    transform: translateY(5px);
+    box-shadow: 
+        0px 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0px 4px 10px rgba(0, 0, 0, 0.35); /* Sombra de profundidad interior */
+}
+
+.key-card:hover .card-overlay {
+    opacity: 1;
+}
+
+/* ADAPTACIÓN MÓVIL Y TABLET */
+@media (max-width: 900px) {
+    .projects-checkerboard {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+    }
+    .card-text {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .projects-checkerboard {
+        grid-template-columns: 1fr; /* 1 columna en teléfonos */
+    }
+}
