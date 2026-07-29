@@ -135,3 +135,37 @@ document.addEventListener('DOMContentLoaded', () => {
         footerObserver.observe(footer);
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- LÓGICA DEL LIGHTBOX (VISOR PANTALLA COMPLETA) ---
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const triggers = document.querySelectorAll('.lightbox-trigger img');
+
+    triggers.forEach(img => {
+        img.addEventListener('click', () => {
+            if (lightboxModal && lightboxImage) {
+                lightboxImage.src = img.src;
+                lightboxModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    function closeLightbox() {
+        if (lightboxModal) {
+            lightboxModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxModal) {
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target !== lightboxImage) closeLightbox();
+        });
+    }
+
+});
