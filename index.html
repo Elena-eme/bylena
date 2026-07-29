@@ -10,14 +10,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style/style.css">
+    <script src="scrpt/script.js" defer></script>
+
 </head>
 <body>
 
-    <nav class="navbar">
-        <a href="#menu" class="nav-link">Menu</a>
-        <a href="proyectos.html" class="nav-link">e</a>
-        <a href="contacto.html" class="nav-link">Contacto</a>
-    </nav>
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+<aside class="side-menu" id="sideMenu">
+    <div class="side-menu-header">
+        <span class="side-menu-title">LIBRARY</span>
+        <button class="close-btn" id="closeMenuBtn" aria-label="Cerrar Menú">(Close)</button>
+    </div>
+
+    <ul class="side-menu-list">
+        <li><a href="index.html" class="menu-item">Index <span>&gt;</span></a></li>
+        <li><a href="proyectos.html" class="menu-item">Selected Works <span>&gt;</span></a></li>
+        <li><a href="3d.html" class="menu-item">3D Work <span>&gt;</span></a></li>
+        <li><a href="editorial.html" class="menu-item">Editorial Design <span>&gt;</span></a></li>
+        <li><a href="graphics.html" class="menu-item">Graphics <span>&gt;</span></a></li>
+        <li><a href="photography.html" class="menu-item">Photography <span>&gt;</span></a></li>
+        <li><a href="cv.html" class="menu-item">Curriculum / About <span>&gt;</span></a></li>
+        <li><a href="contacto.html" class="menu-item">Contacto <span>&gt;</span></a></li>
+    </ul>
+</aside>
+
+<nav class="navbar">
+    <button class="nav-link menu-trigger" id="openMenuBtn">Menu</button>
+    <a href="proyectos.html" class="nav-link active">Proyectos</a>
+    <a href="cv.html" class="nav-link">CV</a>
+    <a href="contacto.html" class="nav-link">Contacto</a>
+</nav>
 
     <section class="hero-section">
         <div class="quote-wrapper">
@@ -79,7 +102,7 @@
 
         </div>
     </section>
-    
+
     <footer class="site-footer">
         <div class="footer-bg">
             <img src="img/bnwfooter.jpg" alt="Footer Background">

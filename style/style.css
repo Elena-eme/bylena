@@ -25,12 +25,13 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 2.5rem 3.5rem;
-    font-size: 0.9rem;
-    font-weight: 400;
+    font-size: 0.7rem;
+    font-weight: 300;
     z-index: 100;
     
     
 }
+
 
 .nav-link {
     text-decoration: none;
@@ -62,6 +63,135 @@ body {
     width: 100%;
 }
 
+/* ==========================================
+   MENÚ DESPLEGABLE LATERAL (OFF-CANVAS TURQUESA)
+   ========================================== */
+
+/* Botón "Menu" en la barra de navegación */
+.menu-trigger {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Capa de fondo con desenfoque (Blur) sobre el resto de la página */
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.15); /* Oscurecimiento suave */
+    backdrop-filter: blur(8px); /* Desenfoque sutil del contenido de fondo */
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Panel Lateral Desplegable */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 380px; /* Ancho del menú lateral */
+    max-width: 85vw; /* Para pantallas pequeñas */
+    height: 100vh;
+    background-color: #d8f3ec; /* Color turquesa claro / Soft Mint */
+    color: #111111;
+    z-index: 999;
+    padding: 2.5rem 2rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.05);
+    
+    /* Estado Oculto (desplazado a la izquierda fuera de pantalla) */
+    transform: translateX(-100%);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Estado Visible al abrir */
+.side-menu.active {
+    transform: translateX(0);
+}
+
+/* Cabecera del Menú Lateral */
+.side-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+    font-family: monospace, sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #111111;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.close-btn:hover {
+    opacity: 1;
+}
+
+/* Lista de Elementos del Menú */
+.side-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    overflow-y: auto;
+}
+
+.side-menu-list li {
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 0;
+    color: #111111;
+    text-decoration: none;
+    font-family: monospace, sans-serif; /* Tipografía estilo mono/editorial */
+    font-size: 0.95rem;
+    transition: padding-left 0.25s ease, opacity 0.2s ease;
+}
+
+.menu-item span {
+    opacity: 0.5;
+    font-size: 0.85rem;
+    transition: transform 0.25s ease;
+}
+
+.menu-item:hover {
+    padding-left: 0.5rem;
+}
+
+.menu-item:hover span {
+    opacity: 1;
+    transform: translateX(3px);
+}
 /* --- Sección 1: Frase --- */
 .hero-section {
     min-height: 100vh;
@@ -566,12 +696,23 @@ body {
     min-height: 100vh;
 }
 
+.subtitle-proyects {
+     display: flex;
+    justify-content:end;
+    padding-right: 4rem;
+    text-align: right;    
+    font-size: 0.7rem;
+    font-weight: 300;
+    z-index: 100;
+    padding-top: 15rem
+}
+
 /* Grid de 4 columnas sin márgenes laterales, abarcando el 100% del ancho de pantalla */
 .projects-checkerboard {
     width: 100vw;
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* 4 columnas iguales */
-    padding-top: 4rem; /* Margen para no chocar con el navbar */
+    padding-top: 5rem; /* Margen para no chocar con el navbar */
     box-sizing: border-box;
 }
 
@@ -681,4 +822,70 @@ body {
     .projects-checkerboard {
         grid-template-columns: 1fr; /* 1 columna en teléfonos */
     }
+}
+
+/* ==========================================
+   Efecto de Aparición del Footer y Ocultación de Nav
+   ========================================== */
+
+/* Transición suave para ocultar la barra de navegación */
+.navbar {
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.navbar.nav-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Estado inicial de tu Footer para que aparezca desde abajo */
+.site-footer {
+    position: relative;
+    z-index: 10;
+    transform: translateY(80px);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+/* Clase que activa el despliegue al hacer scroll al fondo */
+.site-footer.footer-visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* ==========================================
+   Efecto Slide/Snap Suave para INDEX.HTML
+   ========================================== */
+
+/* Habilitar el contenedor principal con snap vertical */
+body.index-page {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+    scroll-behavior: smooth;
+}
+
+/* Cada sección full-screen actuará como una diapositiva */
+.index-page .index-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+    
+    /* Transición suave de desvanecimiento entre bloques */
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Alineación especial para el footer en la última pantalla */
+.index-page .site-footer {
+    scroll-snap-align: end;
+    scroll-snap-stop: always;
 }
