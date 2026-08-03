@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto — Portfolio</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="scrpt/script.js" defer></script>
+
+</head>
+<body class="contact-page">
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+<aside class="side-menu" id="sideMenu">
+    <div class="side-menu-header">
+        <span class="side-menu-title">LIBRARY</span>
+        <button class="close-btn" id="closeMenuBtn" aria-label="Cerrar Menú">(Close)</button>
+    </div>
+
+    <ul class="side-menu-list">
+        <li><a href="index.html" class="menu-item">Index <span>&gt;</span></a></li>
+        <li><a href="proyectos.html" class="menu-item">Selected Works <span>&gt;</span></a></li>
+        <li><a href="3d.html" class="menu-item">3D Work <span>&gt;</span></a></li>
+        <li><a href="editorial.html" class="menu-item">Editorial Design <span>&gt;</span></a></li>
+        <li><a href="graphics.html" class="menu-item">Graphics <span>&gt;</span></a></li>
+        <li><a href="photography.html" class="menu-item">Photography <span>&gt;</span></a></li>
+        <li><a href="cv.html" class="menu-item">Curriculum / About <span>&gt;</span></a></li>
+        <li><a href="contacto.html" class="menu-item">Contacto <span>&gt;</span></a></li>
+    </ul>
+</aside>
+
+<nav class="navbar">
+    <button class="nav-link menu-trigger" id="openMenuBtn">Menu</button>
+    <a href="proyectos.html" class="nav-link active">Proyectos</a>
+    <a href="cv.html" class="nav-link">CV</a>
+    <a href="contacto.html" class="nav-link">Contacto</a>
+</nav>
+
+    <main class="contact-split-container">
+        
+        <div class="contact-col-left">
+            <img src="img/bnwfooter.jpg" alt="Foto de Contacto" class="contact-hero-img">
+        </div>
+
+        <h1 class="contact-main-title">CONTACTO</h1>
+
+        <div class="contact-col-right">
+            <div class="contact-info-wrapper">
+                
+                <ul class="contact-links-list">
+                    <li><a href="mailto:tuemail@ejemplo.com">EMAIL</a></li>
+                    <li><a href="tel:+34600000000">+34 600 000 000</a></li>
+                    <li><a href="https://instagram.com" target="_blank" rel="noopener">INSTAGRAM</a></li>
+                    <li><a href="https://linkedin.com" target="_blank" rel="noopener">LINKEDIN</a></li>
+                </ul>
+
+                <div class="contact-location">
+                    <p>MADRID / BARCELONA</p>
+                    <p>DISPONIBILIDAD FREELANCE</p>
+                </div>
+
+            </div>
+
+            <button id="scrollFooterBtn" class="contact-arrow-btn" aria-label="Ver Footer">
+                &darr;
+            </button>
+        </div>
+
+    </main>
+
+        <footer class="site-footer">
+        <div class="footer-bg">
+            <img src="img/bnwfooter.jpg" alt="Footer Background">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="footer-canvas">
+            <div class="text-node main-collab-text">
+                LET'S WORK<br>TOGETHER.
+            </div>
+
+            <div class="text-node top-handle">
+                @byeme
+            </div>
+
+            <a href="3d.html" class="text-node float-link pos-1">3D Work</a>
+            <a href="editorial.html" class="text-node float-link pos-2">Editorial Design</a>
+            <a href="graphics.html" class="text-node float-link pos-3">Graphics</a>
+            <a href="photography.html" class="text-node float-link pos-4">Photography</a>
+            <a href="shorts.html" class="text-node float-link pos-5">Shorts &amp; Video</a>
+            <a href="cv.html" class="text-node float-link pos-6">Curriculum Vitae</a>
+
+            <div class="text-node concept-tag pos-7">Visual Identity</div>
+            <div class="text-node concept-tag pos-8">Art Direction</div>
+            <div class="text-node concept-tag pos-9">Branding</div>
+            <div class="text-node concept-tag pos-10">Creative Process</div>
+
+            <div class="text-node big-callout">
+                Available for freelance<br>
+                &amp; creative collaborations.<br>
+                <span>Drop a line &rarr;</span>
+            </div>
+
+            <div class="text-node bottom-left-info">
+                <span class="info-label">Contact / Social</span><br>
+                <a href="mailto:hello@byeme.com">hello@byeme.com</a><br>
+                <a href="https://instagram.com" target="_blank">Instagram: @byeme</a>
+            </div>
+
+            <div class="text-node bottom-right-info">
+                <a href="contacto.html" class="nav-contact-btn">Contacto</a><br>
+                <span class="copyright-text">© 2026 @byeme. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const arrowBtn = document.getElementById('scrollFooterBtn');
+            const footer = document.querySelector('.site-footer');
+            const navbar = document.querySelector('.navbar');
+
+            if (arrowBtn && footer) {
+                arrowBtn.addEventListener('click', () => {
+                    // Muestra el footer y oculta la barra de navegación superior
+                    footer.classList.add('footer-visible');
+                    if (navbar) navbar.classList.add('nav-hidden');
+                    
+                    // Hace un scroll suave hacia abajo
+                    window.scrollTo({
+                        top: document.body.scrollHeight,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

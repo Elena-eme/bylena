@@ -27,11 +27,8 @@ body {
     padding: 2.5rem 3.5rem;
     font-size: 0.7rem;
     font-weight: 300;
-    z-index: 100;
-    
-    
+    z-index: 1000 !important; /* Elevado para asegurar interacción */
 }
-
 
 .nav-link {
     text-decoration: none;
@@ -82,17 +79,19 @@ body {
 .menu-overlay {
     position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.15); /* Oscurecimiento suave */
-    backdrop-filter: blur(8px); /* Desenfoque sutil del contenido de fondo */
+    background-color: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    z-index: 998;
+    z-index: 1001 !important;
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s ease;
 }
 
 .menu-overlay.active {
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
 }
 
@@ -101,12 +100,12 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 380px; /* Ancho del menú lateral */
-    max-width: 85vw; /* Para pantallas pequeñas */
+    width: 380px;
+    max-width: 85vw;
     height: 100vh;
-    background-color: #d8f3ec; /* Color turquesa claro / Soft Mint */
+    background-color: #d8f3ec;
     color: #111111;
-    z-index: 999;
+    z-index: 1002 !important; /* Por encima de la navbar y el overlay */
     padding: 2.5rem 2rem;
     box-sizing: border-box;
     display: flex;
@@ -120,7 +119,7 @@ body {
 
 /* Estado Visible al abrir */
 .side-menu.active {
-    transform: translateX(0);
+    transform: translateX(0) !important;
 }
 
 /* Cabecera del Menú Lateral */
@@ -173,7 +172,7 @@ body {
     padding: 0.9rem 0;
     color: #111111;
     text-decoration: none;
-    font-family: monospace, sans-serif; /* Tipografía estilo mono/editorial */
+    font-family: monospace, sans-serif;
     font-size: 0.95rem;
     transition: padding-left 0.25s ease, opacity 0.2s ease;
 }
@@ -192,6 +191,7 @@ body {
     opacity: 1;
     transform: translateX(3px);
 }
+
 /* --- Sección 1: Frase --- */
 .hero-section {
     min-height: 100vh;
@@ -291,7 +291,6 @@ body {
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Efecto Hover: Agranda la imagen suavemente sin desbordar */
 .grid-card:hover img {
     transform: scale(1.12);
 }
@@ -395,7 +394,7 @@ body {
     margin-top: 0.5rem;
 }
 
-/* Enlaces Flotantes de Categorías (Interactivos con Subrayado) */
+/* Enlaces Flotantes de Categorías */
 .float-link {
     font-size: 0.82rem;
     font-weight: 400;
@@ -422,32 +421,34 @@ body {
     text-transform: uppercase;
 }
 
-/* Ubicación Exacta de Categorías y Tags en la Imagen */
-.pos-1  { top: 28%; left: 18%; }  /* 3D Work */
-.pos-2  { top: 38%; left: 32%; }  /* Editorial Design */
-.pos-3  { top: 52%; left: 22%; }  /* Graphics */
-.pos-4  { top: 22%; right: 28%; } /* Photography */
-.pos-5  { top: 34%; right: 20%; } /* Shorts & Video */
-.pos-6  { top: 62%; left: 38%; }  /* Curriculum Vitae */
+/* Ubicación Exacta de Categorías y Tags */
+.pos-1  { top: 28%; left: 18%; }
+.pos-2  { top: 38%; left: 32%; }
+.pos-3  { top: 52%; left: 22%; }
+.pos-4  { top: 22%; right: 28%; }
+.pos-5  { top: 34%; right: 20%; }
+.pos-6  { top: 62%; left: 38%; }
 
-.pos-7  { top: 20%; left: 38%; }  /* Visual Identity */
-.pos-8  { top: 48%; left: 45%; }  /* Art Direction */
-.pos-9  { top: 68%; right: 35%; } /* Branding */
-.pos-10 { top: 75%; right: 22%; } /* Creative Process */
+.pos-7  { top: 20%; left: 38%; }
+.pos-8  { top: 48%; left: 45%; }
+.pos-9  { top: 68%; right: 35%; }
+.pos-10 { top: 75%; right: 22%; }
 
-/* Esquinas Inferiores */
+/* --- Esquinas Inferiores Footer --- */
 .bottom-left-info {
+    position: absolute;
     bottom: 3.5rem;
     left: 3.5rem;
     font-size: 0.82rem;
     line-height: 1.6;
+    z-index: 5;
 }
 
 .bottom-left-info a {
     color: #ffffff;
     text-decoration: none;
     opacity: 0.8;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s ease;
 }
 
 .bottom-left-info a:hover {
@@ -462,11 +463,13 @@ body {
 }
 
 .bottom-right-info {
+    position: absolute;
     bottom: 3.5rem;
     right: 3.5rem;
     text-align: right;
     font-size: 0.82rem;
     line-height: 1.6;
+    z-index: 5;
 }
 
 .nav-contact-btn {
@@ -491,21 +494,23 @@ body {
     color: #111111;
 }
 
+.cv-section {
+    margin-bottom: 7rem;
+    border-top: 1px solid #111111;
+    padding-top: 2.5rem;
+}
+
 /* Hero de Pantalla Completa */
 .cv-hero {
     position: relative;
     width: 100%;
-    height: 100vh; /* Ocupa exactamente el 100% del alto de la pantalla */
+    height: 100vh;
     display: flex;
     align-items: flex-end;
     overflow: hidden;
     color: #ffffff;
 }
-.cv-section {
-    margin-bottom: 7rem; /* Gran separación respirada entre secciones */
-    border-top: 1px solid #111111; /* Línea divisoria superior completa */
-    padding-top: 2.5rem;
-}
+
 .cv-hero-bg {
     position: absolute;
     top: 0;
@@ -519,7 +524,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter:  contrast(120%);
+    filter: contrast(120%);
 }
 
 .cv-hero-bg .overlay {
@@ -539,7 +544,7 @@ body {
 }
 
 .cv-name {
-    font-size: 9.5rem;
+    font-size: clamp(3.5rem, 10vw, 9.5rem); /* Escalado dinámico responsivo */
     font-weight: 100;
     letter-spacing: -0.03em;
     line-height: 0.9;
@@ -557,7 +562,7 @@ body {
     text-transform: uppercase;
 }
 
-/* El cuerpo del CV sube sobre la pantalla al hacer scroll */
+/* Cuerpo del CV sobrepuesto */
 .cv-body-wrapper {
     position: relative;
     z-index: 10;
@@ -567,7 +572,7 @@ body {
     padding: 5rem 2rem 6rem;
 }
 
-/* --- Carrusel de Gustos Horizontal --- */
+/* --- Carrusel Horizontal --- */
 .carousel-header {
     display: flex;
     justify-content: space-between;
@@ -603,14 +608,12 @@ body {
     color: #ffffff;
 }
 
-/* Contenedor deslizante en una sola fila */
 .carousel-wrapper {
     display: flex;
     gap: 1.8rem;
     overflow-x: auto;
     scroll-behavior: smooth;
     padding: 1rem 0.5rem;
-    /* Ocultar barra de scroll según navegador */
     scrollbar-width: none; /* Firefox */
 }
 
@@ -618,9 +621,9 @@ body {
     display: none; /* Chrome/Safari */
 }
 
-/* Tarjetas con efecto Hover (se agrandan) */
+/* Tarjetas Media */
 .media-card {
-    flex: 0 0 160px; /* Ancho fijo para cada tarjeta */
+    flex: 0 0 160px;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -636,7 +639,6 @@ body {
     transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), filter 0.35s ease;
 }
 
-/* Efecto Hover: Agranda la imagen */
 .media-card:hover {
     transform: scale(1.08);
 }
@@ -655,7 +657,7 @@ body {
     opacity: 0.6;
 }
 
-/* --- Estilos para los Acordeones Desplegables --- */
+/* --- Acordeones Desplegables --- */
 .accordion-item {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -669,7 +671,7 @@ body {
     font-size: 0.82rem;
     text-transform: uppercase;
     letter-spacing: 0.03em;
-    list-style: none; /* Elimina la flecha por defecto en algunos navegadores */
+    list-style: none;
 }
 
 .accordion-header::-webkit-details-marker {
@@ -685,10 +687,8 @@ body {
 }
 
 /* ==========================================
-   GALERÍA GRID EXACTA A LA REFERENCIA
+   GALERÍA GRID (PROYECTOS / CHECKERBOARD)
    ========================================== */
-
-
 
 .projects-page {
     background-color: #ffffff;
@@ -697,29 +697,27 @@ body {
 }
 
 .subtitle-proyects {
-     display: flex;
-    justify-content:end;
+    display: flex;
+    justify-content: flex-end;
     padding-right: 4rem;
     text-align: right;    
     font-size: 0.7rem;
     font-weight: 300;
     z-index: 100;
-    padding-top: 15rem
+    padding-top: 15rem;
 }
 
-/* Grid de 4 columnas sin márgenes laterales, abarcando el 100% del ancho de pantalla */
 .projects-checkerboard {
     width: 100vw;
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 4 columnas iguales */
-    padding-top: 5rem; /* Margen para no chocar con el navbar */
+    grid-template-columns: repeat(5, 1fr);
+    padding-top: 5rem;
     box-sizing: border-box;
 }
 
-/* Celdas Rectangulares Grandes (Relación 3:4 como en la foto) */
 .board-card {
     width: 100%;
-    aspect-ratio: 3 / 4; /* Formato rectangular vertical grande */
+    aspect-ratio: 3 / 4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -727,7 +725,7 @@ body {
     box-sizing: border-box;
 }
 
-/* --- TARJETAS DE TEXTO --- */
+/* Tarjetas de Texto */
 .text-card {
     background-color: #ffffff;
     padding: 2rem;
@@ -743,9 +741,9 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-/* --- TARJETAS DE IMAGEN (EFECTO TECLA 3D) --- */
+/* Tarjetas de Imagen (Efecto Tecla 3D) */
 .image-card {
-    padding: 0; /* Imagenes limpias pegadas como en la foto de referencia */
+    padding: 0;
 }
 
 .key-card {
@@ -756,8 +754,6 @@ body {
     text-decoration: none;
     overflow: hidden;
     background-color: #f2f1ed;
-    
-    /* Sombra inicial en relieve (Efecto Tecla) */
     box-shadow: 
         0px 6px 15px rgba(0, 0, 0, 0.08),
         inset 0px 1px 1px rgba(255, 255, 255, 0.6);
@@ -775,7 +771,6 @@ body {
     transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-/* Título flotante encima de la imagen al hacer Hover */
 .card-overlay {
     position: absolute;
     inset: 0;
@@ -796,22 +791,21 @@ body {
     text-transform: uppercase;
 }
 
-/* HOVER: Se hunde hacia adentro como si presionases una tecla física */
 .key-card:hover {
     transform: translateY(5px);
     box-shadow: 
         0px 1px 3px rgba(0, 0, 0, 0.1),
-        inset 0px 4px 10px rgba(0, 0, 0, 0.35); /* Sombra de profundidad interior */
+        inset 0px 4px 10px rgba(0, 0, 0, 0.35);
 }
 
 .key-card:hover .card-overlay {
     opacity: 1;
 }
 
-/* ADAPTACIÓN MÓVIL Y TABLET */
+/* Adaptación Responsiva Grid */
 @media (max-width: 900px) {
     .projects-checkerboard {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+        grid-template-columns: repeat(2, 1fr);
     }
     .card-text {
         font-size: 1.4rem;
@@ -820,15 +814,14 @@ body {
 
 @media (max-width: 500px) {
     .projects-checkerboard {
-        grid-template-columns: 1fr; /* 1 columna en teléfonos */
+        grid-template-columns: 1fr;
     }
 }
 
 /* ==========================================
-   Efecto de Aparición del Footer y Ocultación de Nav
+   Transiciones de Nav y Footer
    ========================================== */
 
-/* Transición suave para ocultar la barra de navegación */
 .navbar {
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
 }
@@ -839,7 +832,6 @@ body {
     pointer-events: none;
 }
 
-/* Estado inicial de tu Footer para que aparezca desde abajo */
 .site-footer {
     position: relative;
     z-index: 10;
@@ -848,17 +840,15 @@ body {
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
 }
 
-/* Clase que activa el despliegue al hacer scroll al fondo */
 .site-footer.footer-visible {
     transform: translateY(0);
     opacity: 1;
 }
 
 /* ==========================================
-   Efecto Slide/Snap Suave para INDEX.HTML
+   Efecto Snap Vertical para INDEX.HTML
    ========================================== */
 
-/* Habilitar el contenedor principal con snap vertical */
 body.index-page {
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
@@ -866,7 +856,6 @@ body.index-page {
     scroll-behavior: smooth;
 }
 
-/* Cada sección full-screen actuará como una diapositiva */
 .index-page .index-section {
     scroll-snap-align: start;
     scroll-snap-stop: always;
@@ -878,66 +867,54 @@ body.index-page {
     align-items: center;
     position: relative;
     box-sizing: border-box;
-    
-    /* Transición suave de desvanecimiento entre bloques */
     transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
                 transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Alineación especial para el footer en la última pantalla */
 .index-page .site-footer {
     scroll-snap-align: end;
     scroll-snap-stop: always;
 }
 
 /* ==========================================
-   MAQUETA EDITORIAL EXACTA A LA REFERENCIA
+   MAQUETA EDITORIAL
    ========================================== */
 
 .editorial-page {
-    background-color: #f7f6f2; /* Tono papel blanco roto / crema */
+    background-color: #f7f6f2;
     color: #000000;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-/* Contenedor que ocupa todo el ancho con margen mínimo a la izquierda */
 .editorial-container {
     width: 100%;
     max-width: 100vw;
-    /*padding: 5rem 0 0 1.5rem; /* Pegado a la izquierda */
     padding-top: 4rem;
     box-sizing: border-box;
-    
 }
 
 .editorial-project {
     margin-bottom: 6rem;
     width: 100%;
     padding-top: 4rem;
-
-    
 }
 
 .project-description {
     text-align: justify;
-
 }
 
-/* --- BLOQUE SUPERIOR: 2 COLUMNAS PEGADAS --- */
+/* Bloque Superior Grid */
 .project-header-grid {
     display: grid;
-    grid-template-columns: 240px 1fr; /* Columna izquierda estrecha, derecha fluida */
+    grid-template-columns: 240px 1fr;
     column-gap: 3rem;
     align-items: start;
-    max-width: 600px; /* Ancho ajustado para mantener la proporción del texto */
-    margin-bottom: 20rem;
-   
-
+    max-width: 600px;
+    margin-bottom: 4rem; /* Ajustado de 20rem a un valor más usable */
 }
 
-/* Columna Izquierda (Texto superior corto/negrita) */
 .header-col-left .project-headline {
     font-size: 0.82rem;
     font-weight: 700;
@@ -947,69 +924,59 @@ body.index-page {
     margin-left: 4rem;
 }
 
-/* Columna Derecha (Párrafo explicativo largo) */
 .header-col-right .project-description {
-    font-size: 0.82rem;
+    font-size: 0.62rem;
     font-weight: 400;
     line-height: 1.45;
     color: #000000;
     margin: 0;
 }
 
-/* --- LÍNEA SEPARADORA FINA --- */
 .editorial-divider {
     border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(0, 0, 0, 0.15); /* Corregido color para fondo claro */
     margin: 2.5rem 0;
     width: 100%;
 }
 
-/* --- BLOQUE INTERMEDIO: TEXTO SECUNDARIO --- */
 .project-body-grid {
     display: grid;
     grid-template-columns: 240px 1fr;
     column-gap: 2rem;
     align-items: start;
     max-width: 900px;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .body-col-left .secondary-annotation {
-    font-size: 0.82rem;
-    font-weight: 700;
+    font-size: 0.62rem;
+    font-weight: 600;
     line-height: 1.35;
     color: #000000;
     margin: 0;
     margin-left: 4rem;
-
 }
 
-/* ==========================================
-   TIRA DE IMÁGENES VERTICALES DEL MISMO TAMAÑO
-   ========================================== */
-
+/* Tira de Imágenes Verticales */
 .image-strip-seamless {
     display: flex;
     width: 100%;
-    gap: 0; /* Sin espacio entre las imágenes */
+    gap: 0;
     margin-top: 2rem;
 }
 
 .image-strip-seamless .gallery-item {
-    flex: 1; /* Todas las columnas reciben el mismo ancho exactamente */
+    flex: 1;
     position: relative;
     cursor: zoom-in;
     overflow: hidden;
-    
-    /* Mantiene a todas las imágenes en formato vertical uniforme */
-    aspect-ratio: 3 / 4; /* Puedes cambiarlo a 4 / 5 si las prefieres aún más altas */
+    aspect-ratio: 3 / 4;
 }
 
 .image-strip-seamless .gallery-item img {
     width: 100%;
     height: 100%;
     display: block;
-    /* Recorta la imagen para llenar el contenedor vertical sin deformarla */
     object-fit: cover; 
     object-position: center;
     transition: filter 0.25s ease, transform 0.3s ease;
@@ -1019,7 +986,8 @@ body.index-page {
     filter: brightness(0.92);
     transform: scale(1.02);
 }
-/* --- LIGHTBOX (VISOR) --- */
+
+/* Lightbox Modal */
 .lightbox-modal {
     display: none;
     position: fixed;
@@ -1054,7 +1022,7 @@ body.index-page {
     cursor: pointer;
 }
 
-/* Adaptación para móviles */
+/* Responsive Editorial */
 @media (max-width: 768px) {
     .editorial-container {
         padding-left: 1rem;
@@ -1068,5 +1036,518 @@ body.index-page {
 
     .image-strip-seamless {
         flex-direction: column;
+    }
+}
+
+/* ==========================================
+   CARRUSEL EDITORIAL (GRAPHICS)
+   ========================================== */
+
+.graphics-page {
+    background-color: #f6f5f1;
+    color: #000000;
+    overflow-x: hidden;
+}
+
+.carousel-section {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 80px);
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.hover-info-box {
+    position: absolute;
+    top: 6%;
+    left: 8%;
+    max-width: 280px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+    font-family: 'Helvetica Neue', sans-serif;
+    z-index: 10;
+}
+
+/* ==========================================
+   HOVER INFO BOX & CARRUSEL CON MÁSCARA
+   ========================================== */
+
+.hover-info-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hover-info-box .info-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.hover-info-box .info-text {
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1.35;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+
+/* --- Máscara de Desvanecimiento Lateral --- */
+.carousel-track-container {
+    width: 100%;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    cursor: grab;
+    padding: 5rem 0 3rem 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 8%,
+        black 92%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 8%,
+        black 92%,
+        transparent 100%
+    );
+}
+
+.carousel-track-container::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-track-container:active {
+    cursor: grabbing;
+}
+
+/* Pista alineada a la base */
+.carousel-track {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    padding: 0 6vw;
+    width: max-content;
+    height: 360px;
+}
+
+/* --- Tarjetas del Carrusel --- */
+.carousel-item {
+    flex-shrink: 0;
+    width: 190px;           /* Ancho fijo vertical */
+    height: 260px;          /* Alto fijo vertical (proporción 3:4) */
+    position: relative;
+    cursor: pointer;
+    overflow: visible;
+    transform-origin: bottom center;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+    background-color: #e5e5e5;
+}
+
+/* Hover: Escalado suave sin desplazar elementos adyacentes */
+.carousel-item:hover {
+    transform: scale(1.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    z-index: 20;
+}
+
+/* Título dinámico flotante superior */
+.carousel-item::after {
+    content: attr(data-title);
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 0;
+    width: 100%;
+    white-space: nowrap;
+    color: #000000;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+.carousel-item:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================
+   MODAL LIGHTBOX (VISOR GLOBAL UNIFICADO)
+   ========================================== */
+
+.lightbox-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 2000 !important;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-content {
+    max-width: 75vw;
+    max-height: 75vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 300;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.2s ease;
+}
+
+.lightbox-close:hover {
+    opacity: 0.6;
+}
+
+/* ==========================================
+   PAGE 3D: LAYOUT EDITORIAL AISLADO
+   ========================================== */
+
+.editorial-3d-page {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Contenedor Grid Principal */
+.editorial-3d-page .sec-3d-layout {
+    position: relative;
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 130px 5vw 120px 5vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5vw;
+    row-gap: 60px;
+    box-sizing: border-box;
+}
+
+/* Columna Izquierda */
+.editorial-3d-page .sec-3d-col-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.editorial-3d-page .sec-3d-heading {
+    font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0;
+    max-width: 460px;
+    color: #000000;
+}
+
+/* Columna Derecha */
+.editorial-3d-page .sec-3d-col-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Fichas Técnicas */
+.editorial-3d-page .sec-3d-spec {
+    font-size: 0.72rem;
+    line-height: 1.35;
+    color: #111111;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+.editorial-3d-page .sec-3d-spec p {
+    margin: 0;
+}
+
+.editorial-3d-page .sec-3d-spec-top {
+    margin-bottom: 20px;
+}
+
+/* Bloque Galería Doble Imagen */
+.editorial-3d-page .sec-3d-grid-imgs {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+}
+
+.editorial-3d-page .sec-3d-img-box {
+    position: relative;
+    cursor: pointer;
+}
+
+.editorial-3d-page .sec-3d-img-box img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.editorial-3d-page .sec-3d-img-main {
+    flex: 1 1 70%;
+    max-width: 380px;
+}
+
+.editorial-3d-page .sec-3d-img-sub {
+    flex: 0 0 25%;
+    max-width: 135px;
+}
+
+.editorial-3d-page .sec-3d-img-num {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin-top: 10px;
+    color: #000000;
+}
+
+.editorial-3d-page .sec-3d-spec-bottom {
+    margin-top: 50px;
+    align-self: flex-end;
+}
+
+/* Pie de Layout */
+.editorial-3d-page .sec-3d-footer-left {
+    grid-column: 1 / 2;
+    align-self: end;
+    font-size: 0.72rem;
+    font-weight: 400;
+}
+
+.editorial-3d-page .sec-3d-footer-left p {
+    margin: 0;
+}
+
+.editorial-3d-page .sec-3d-footer-center {
+    position: absolute;
+    bottom: 120px;
+    left: 30vw;
+    font-size: 0.72rem;
+    line-height: 1.35;
+    font-weight: 400;
+}
+
+.editorial-3d-page .sec-3d-footer-center p {
+    margin: 0;
+}
+
+/* Adaptación Móvil/Tablet */
+@media (max-width: 850px) {
+    .editorial-3d-page .sec-3d-layout {
+        grid-template-columns: 1fr;
+        padding-top: 100px;
+        row-gap: 40px;
+    }
+
+    .editorial-3d-page .sec-3d-footer-center {
+        position: static;
+        margin-top: 20px;
+    }
+
+    .editorial-3d-page .sec-3d-grid-imgs {
+        flex-direction: column;
+    }
+
+    .editorial-3d-page .sec-3d-img-sub {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+/*CONTACTO*/
+
+/* ==========================================
+   PÁGINA DE CONTACTO (SPLIT 50/50 EDITORIAL)
+   ========================================== */
+
+.contact-page {
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+.contact-split-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Columna Izquierda: Imagen al 50% */
+.contact-col-left {
+    width: 50vw;
+    height: 100vh;
+    position: relative;
+}
+
+.contact-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Columna Derecha: Fondo Blanco con Info centrada en la esquina inferior derecha */
+.contact-col-right {
+    width: 50vw;
+    height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Empuja todo al fondo */
+    align-items: flex-end;     /* Alinea todo a la derecha */
+    text-align: right;         /* Texto alineado a la derecha */
+    padding: 0 5rem 4rem 0;    /* Separación desde los bordes derecho e inferior */
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Título Gigante Rojo en el centro */
+.contact-main-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(3.5rem, 8vw, 9rem);
+    font-weight: 400;
+    color: #e53935;
+    letter-spacing: -0.02em;
+    margin: 0;
+    z-index: 10;
+    pointer-events: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Bloque de Información ubicado abajo a la derecha */
+.contact-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.contact-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contact-links-list a {
+    color: #e53935;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: opacity 0.2s ease;
+}
+
+.contact-links-list a:hover {
+    opacity: 0.6;
+}
+
+.contact-location {
+    font-size: 0.72rem;
+    color: #111111;
+    line-height: 1.4;
+    letter-spacing: 0.03em;
+}
+
+.contact-location p {
+    margin: 0;
+}
+
+/* Flecha (↓) abajo a la derecha */
+.contact-arrow-btn {
+    background: none;
+    border: none;
+    color: #e53935;
+    font-size: 2.2rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.contact-arrow-btn:hover {
+    transform: translateY(6px);
+    opacity: 0.7;
+}
+
+/* Adaptación Responsive Móvil */
+@media (max-width: 768px) {
+    .contact-split-container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .contact-col-left,
+    .contact-col-right {
+        width: 100vw;
+        height: 50vh;
+    }
+
+    .contact-main-title {
+        font-size: 3.5rem;
+        top: 45vh;
+    }
+
+    .contact-col-right {
+        padding: 3rem 2rem 2rem;
+        justify-content: flex-end;
+        align-items: flex-end;
     }
 }
