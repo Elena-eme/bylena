@@ -167,3 +167,21 @@ document.addEventListener('DOMContentLoaded', () => {
         nextBtn.addEventListener('click', () => carouselBtnTarget.scrollBy({ left: 300, behavior: 'smooth' }));
     }
 });
+
+<script>
+    function toggleVolume() {
+        const video = document.getElementById('tfgVideo');
+        const muteIcon = document.getElementById('muteIcon');
+        const soundIcon = document.getElementById('soundIcon');
+
+        if (video.muted) {
+            video.muted = false;
+            muteIcon.classList.add('hidden');
+            soundIcon.classList.remove('hidden');
+        } else {
+            video.muted = true;
+            muteIcon.classList.remove('hidden');
+            soundIcon.classList.add('hidden');
+        }
+    }
+</script>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TFG — Portfolio</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="scrpt/script.js" defer></script>
+</head>
+<body class="tfg-page">
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <aside class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <span class="side-menu-title">LIBRARY</span>
+            <button class="close-btn" id="closeMenuBtn" aria-label="Cerrar Menú">(Close)</button>
+        </div>
+
+        <ul class="side-menu-list">
+            <li><a href="index.html" class="menu-item">Index <span>&gt;</span></a></li>
+            <li><a href="proyectos.html" class="menu-item">Selected Works <span>&gt;</span></a></li>
+            <li><a href="3d.html" class="menu-item">3D Work <span>&gt;</span></a></li>
+            <li><a href="editorial.html" class="menu-item">Editorial Design <span>&gt;</span></a></li>
+            <li><a href="graphics.html" class="menu-item">Graphics <span>&gt;</span></a></li>
+            <li><a href="photography.html" class="menu-item">Photography <span>&gt;</span></a></li>
+            <li><a href="cv.html" class="menu-item">Curriculum / About <span>&gt;</span></a></li>
+            <li><a href="contacto.html" class="menu-item">Contacto <span>&gt;</span></a></li>
+        </ul>
+    </aside>
+
+    <nav class="navbar">
+        <button class="nav-link menu-trigger" id="openMenuBtn">Menu</button>
+        <a href="proyectos.html" class="nav-link active">Proyectos</a>
+        <a href="cv.html" class="nav-link">CV</a>
+        <a href="contacto.html" class="nav-link">Contacto</a>
+    </nav>
+
+    <main class="tfg-editorial-container">
+        <section class="tfg-spread-v2">
+
+            <div class="tfg-col">
+                <div class="text-group">
+                    <h3 class="tfg-title">Añade algo de texto</h3>
+                    <p class="tfg-paragraph">
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+                    </p>
+                </div>
+
+                <div class="media-box box-square-large">
+                    <img src="img/avalon/fotos/foto editada armadura 2 (1).png" alt="Imagen 1" class="media-content">
+                </div>
+            </div>
+
+            <div class="tfg-col">
+                <div class="media-box box-vertical-main">
+                    <img src="img/avalon/fotos/_T7A7927.jpg" alt="Imagen 2" class="media-content">
+                </div>
+
+                <div class="text-group">
+                    <h3 class="tfg-title">Añade algo de texto</h3>
+                    <p class="tfg-paragraph">
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ip
+                    </p>
+                </div>
+
+                <div class="media-box box-square-medium">
+                    <img src="img/avalon/fotos/_T7A7873.jpg" alt="Imagen 3" class="media-content">
+                </div>
+            </div>
+
+            <div class="tfg-col offset-down">
+                <div class="text-group">
+                    <h3 class="tfg-title">Añade algo de texto</h3>
+                </div>
+
+                <div class="media-box box-vertical-video">
+                    <video id="tfgVideo" autoplay loop muted playsinline class="media-content">
+                        <source src="img/otros/Martin.Elena_Avalon_Spot.Reel.mp4" type="video/mp4">
+                    </video>
+                    
+                    <button class="volume-btn" id="volumeToggleBtn" aria-label="Activar o desactivar sonido">
+                        <svg id="muteIcon" class="volume-icon" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M3.63 3.63a.996.996 0 0 0 0 1.41L7.29 8.7 7 9H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h3l3.29 3.29c.63.63 1.71.18 1.71-.71v-4.17l4.18 4.18c-.49.37-1.02.68-1.6.91-.36.15-.58.53-.58.92 0 .61.59 1.07 1.18.85.88-.34 1.69-.82 2.4-1.42l1.38 1.38a.996.996 0 1 0 1.41-1.41L5.05 3.63a.996.996 0 0 0-1.42 0zM19 12c0 .82-.15 1.61-.41 2.34l1.53 1.53c.56-1.17.88-2.48.88-3.87 0-3.83-2.4-7.11-5.78-8.4-.59-.23-1.22.23-1.22.86 0 .41.26.77.65.92C17.3 6.47 19 8.98 19 12zm-3.5 0c0-.88-.36-1.68-.93-2.27l1.47-1.47B7.9 6.8 17.9 9.25 17.9 12c0 1.25-.43 2.4-1.15 3.32l-1.46-1.46c.44-.5.71-1.17.71-1.86z"/>
+                        </svg>
+                        <svg id="soundIcon" class="volume-icon hidden" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <div id="lightboxModal" class="lightbox-modal">
+        <span id="lightboxClose" class="lightbox-close">&times;</span>
+        <img id="lightboxImage" class="lightbox-content" src="" alt="Ampliación">
+    </div>
+
+    <footer class="site-footer">
+        <div class="bottom-left-info">
+            <span class="info-label">TRABAJO DE FIN DE GRADO</span><br>
+            <a href="mailto:tuemail@ejemplo.com">tuemail@ejemplo.com</a>
+        </div>
+        <div class="bottom-right-info">
+            <p class="copyright-text">&copy; 2026 TODOS LOS DERECHOS RESERVADOS</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('tfgVideo');
+            const volumeBtn = document.getElementById('volumeToggleBtn');
+            const muteIcon = document.getElementById('muteIcon');
+            const soundIcon = document.getElementById('soundIcon');
+
+            if (video && volumeBtn) {
+                volumeBtn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Evita interferir con el Lightbox si existiera
+                    if (video.muted) {
+                        video.muted = false;
+                        muteIcon.classList.add('hidden');
+                        soundIcon.classList.remove('hidden');
+                    } else {
+                        video.muted = true;
+                        muteIcon.classList.remove('hidden');
+                        soundIcon.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

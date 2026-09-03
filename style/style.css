@@ -1551,3 +1551,148 @@ body.index-page {
         align-items: flex-end;
     }
 }
+
+/* TFG */
+/* ==========================================
+   LAYOUT NUEVO: 3 COLUMNAS EXACTAS
+   ========================================== */
+
+.tfg-editorial-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 100px 60px;
+    margin-top: 30px;
+}
+
+.tfg-spread-v2 {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr; /* 3 Columnas */
+    column-gap: 50px;
+    align-items: start;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.tfg-col {
+    display: flex;
+    flex-direction: column;
+    gap: 35px; /* Espaciado interno constante entre textos y elementos */
+}
+
+/* Desplazamiento de la columna 3 (Derecha) */
+.tfg-col.offset-down {
+    margin-top: 140px;
+}
+
+/* --- TIPOGRAFÍA Y TEXTOS --- */
+
+.tfg-title {
+    font-size: 14px;
+    font-weight: 400;
+    color: #111111;
+    margin: 0 0 16px 0;
+}
+
+.tfg-paragraph {
+    font-size: 9px;
+    line-height: 2;
+    font-weight: 300;
+    color: #333333;
+    text-align: justify;
+    margin: 0;
+}
+
+/* --- TAMAÑOS DE CAJAS / RECTÁNGULOS --- */
+
+.media-box {
+    position: relative;
+    overflow: hidden;
+    background-color: #0b1126; /* Fondo oscuro mientras carga la imagen */
+    width: 100%;
+}
+
+.media-content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Columna 1: Cuadro grande abajo */
+.box-square-large {
+    height: 400px;
+    margin-top: 50px;
+}
+
+/* Columna 2: Rectángulo vertical arriba */
+.box-vertical-main {
+    height: 300px;
+    margin-left: 0px;
+}
+
+/* Columna 2: Cuadro abajo */
+.box-square-medium {
+    height: 380px;
+    margin-top: 150px;
+}
+
+/* Posicionamiento del Vídeo Vertical y el Botón */
+.box-vertical-video {
+    position: relative; /* Indispensable para situar el botón dentro */
+    height: 800px;
+   
+    
+}
+
+.volume-btn {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.volume-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.05);
+}
+
+.volume-icon {
+    width: 16px;
+    height: 16px;
+    pointer-events: none; /* Previene fallos de clic sobre el propio SVG */
+}
+
+.hidden {
+    display: none !important;
+}
+/* --- RESPONSIVE MÓVIL --- */
+@media (max-width: 900px) {
+    .tfg-spread-v2 {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        row-gap: 60px;
+    }
+
+    .tfg-col.offset-down {
+        margin-top: 0;
+    }
+
+    .box-square-large,
+    .box-vertical-main,
+    .box-square-medium,
+    .box-vertical-video {
+        height: 350px;
+    }
+}
