@@ -29,29 +29,32 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
 
     // ==========================================
-    // 2. MOSTRAR / OCULTAR FOOTER Y NAVBAR EN SCROLL
+    // 2. CONTROL DE OCULTAR NAVBAR EN SCROLL (FOOTER SIEMPRE VISIBLE)
     // ==========================================
     const navbar = document.querySelector('.navbar');
     const footer = document.querySelector('.site-footer');
 
+    // Aseguramos que el footer SIEMPRE esté visible por defecto
     if (footer) {
-        const checkFooterVisibility = () => {
+        footer.classList.add('footer-visible');
+    }
+
+    if (navbar && footer) {
+        const checkScroll = () => {
             const windowHeight = window.innerHeight;
             const scrollY = window.scrollY || window.pageYOffset;
             const documentHeight = document.documentElement.scrollHeight;
 
-            // Si el usuario está cerca del final de la página (a 80px del suelo)
+            // Oculta la barra de navegación superior únicamente si llegamos al final de la página
             if (windowHeight + scrollY >= documentHeight - 80) {
-                if (navbar) navbar.classList.add('nav-hidden');
-                footer.classList.add('footer-visible');
+                navbar.classList.add('nav-hidden');
             } else {
-                if (navbar) navbar.classList.remove('nav-hidden');
-                footer.classList.remove('footer-visible');
+                navbar.classList.remove('nav-hidden');
             }
         };
 
-        window.addEventListener('scroll', checkFooterVisibility, { passive: true });
-        checkFooterVisibility(); // Ejecutar al inicio por si ya está abajo
+        window.addEventListener('scroll', checkScroll, { passive: true });
+        checkScroll();
     }
 
     // ==========================================
@@ -60,9 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const trackContainer = document.getElementById('carouselTrack');
     const hoverInfo = document.getElementById('hoverInfo');
     const items = document.querySelectorAll('.carousel-item');
-    let isDragging = false; // Control para evitar abrir el Lightbox al arrastrar
+    let isDragging = false; 
 
-    // Texto dinámico superior al hacer hover
     if (hoverInfo && items.length > 0) {
         items.forEach(item => {
             item.addEventListener('mouseenter', () => {
@@ -80,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Arrastrar con el ratón (Drag to Scroll)
     if (trackContainer) {
         let isDown = false;
         let startX;
@@ -103,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const x = e.pageX - trackContainer.offsetLeft;
             const walk = (x - startX) * 2;
             
-            // Si el movimiento es mayor a 5px, consideramos que es un arrastre (no un clic)
             if (Math.abs(walk) > 5) {
                 isDragging = true;
             }
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 4. LIGHTBOX (MODAL AMPLIZADO EN CLIC)
+    // 4. LIGHTBOX (MODAL AMPLIADO EN CLIC)
     // ==========================================
     const lightboxModal = document.getElementById('lightboxModal');
     const lightboxImage = document.getElementById('lightboxImage');
@@ -120,8 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const triggers = document.querySelectorAll('.lightbox-trigger');
 
     triggers.forEach(trigger => {
-        trigger.addEventListener('click', (e) => {
-            // Si el usuario estaba arrastrando el carrusel, ignora el clic
+        trigger.addEventListener('click', () => {
             if (isDragging) return;
 
             const img = trigger.tagName === 'IMG' ? trigger : trigger.querySelector('img');
@@ -147,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Cierre unificado de Menú y Lightbox con la tecla ESC
+    // Cierre con la tecla ESC
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             if (sideMenu && sideMenu.classList.contains('active')) closeMenu();
@@ -168,20 +167,118 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-<script>
-    function toggleVolume() {
-        const video = document.getElementById('tfgVideo');
-        const muteIcon = document.getElementById('muteIcon');
-        const soundIcon = document.getElementById('soundIcon');
+// ==========================================
+// 6. FUNCIÓN DE VOLUMEN DE VÍDEO (TFG)
+// ==========================================
+function toggleVolume() {
+    const video = document.getElementById('tfgVideo');
+    const muteIcon = document.getElementById('muteIcon');
+    const soundIcon = document.getElementById('soundIcon');
 
+    if (video) {
         if (video.muted) {
             video.muted = false;
-            muteIcon.classList.add('hidden');
-            soundIcon.classList.remove('hidden');
+            if (muteIcon) muteIcon.classList.add('hidden');
+            if (soundIcon) soundIcon.classList.remove('hidden');
         } else {
             video.muted = true;
-            muteIcon.classList.remove('hidden');
-            soundIcon.classList.add('hidden');
+            if (muteIcon) muteIcon.classList.remove('hidden');
+            if (soundIcon) soundIcon.classList.add('hidden');
         }
     }
-</script>
+}
+
+// VIDEO
+
+// ==========================================
+// PÁGINA DE VÍDEO: EXPANSIÓN DE TARJETAS PANTONE Y REPRODUCTOR MODAL
+// ==========================================
+const folderCards = document.querySelectorAll('.folder-card');
+const videoModal = document.getElementById('videoModal');
+const closeVideoModal = document.getElementById('closeVideoModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalSubtitle = document.getElementById('modalSubtitle');
+const modalDesc = document.getElementById('modalDesc');
+const modalIframe = document.getElementById('modalIframe');
+
+if (folderCards.length > 0 && videoModal) {
+    folderCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const title = card.getAttribute('data-title');
+            const subtitle = card.getAttribute('data-subtitle');
+            const desc = card.getAttribute('data-desc');
+            const ytUrl = card.getAttribute('data-yt');
+
+            // 1. Obtener coordenadas y posición central exacta de la tarjeta pulsada
+            const rect = card.getBoundingClientRect();
+            const cardCenterX = rect.left + rect.width / 2;
+            const cardCenterY = rect.top + rect.height / 2;
+
+            // 2. Extraer el color de fondo y de texto exactos asignados a la tarjeta
+            const cardBg = window.getComputedStyle(card).backgroundColor;
+            const cardColor = window.getComputedStyle(card).color;
+
+            // 3. Aplicar colores al modal expandido
+            videoModal.style.backgroundColor = cardBg;
+            videoModal.style.color = cardColor;
+
+            // 4. Fijar el origen de la animación en el punto donde está la tarjeta en pantalla
+            videoModal.style.transformOrigin = `${cardCenterX}px ${cardCenterY}px`;
+
+            // 5. Cargar contenidos y URL del vídeo
+            modalTitle.textContent = title;
+            modalSubtitle.textContent = subtitle;
+            modalDesc.textContent = desc;
+            modalIframe.src = ytUrl + "?autoplay=1";
+
+            // 6. Activar visibilidad y bloquear el scroll de fondo
+            videoModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // 7. Animación de expansión fluida usando Web Animations API
+            videoModal.animate([
+                { transform: 'scale(0)', opacity: 0, borderRadius: '20px' },
+                { transform: 'scale(1)', opacity: 1, borderRadius: '0px' }
+            ], {
+                duration: 450,
+                easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                fill: 'forwards'
+            });
+        });
+    });
+
+    // Función para cerrar la tarjeta expandida encogiéndose a su posición de origen
+    function hideVideoModal() {
+        if (!videoModal.classList.contains('active')) return;
+
+        const animation = videoModal.animate([
+            { transform: 'scale(1)', opacity: 1, borderRadius: '0px' },
+            { transform: 'scale(0)', opacity: 0, borderRadius: '20px' }
+        ], {
+            duration: 350,
+            easing: 'ease-in-out',
+            fill: 'forwards'
+        });
+
+        animation.onfinish = () => {
+            videoModal.classList.remove('active');
+            modalIframe.src = ""; // Detener la reproducción del vídeo al cerrar
+            document.body.style.overflow = '';
+        };
+    }
+
+    // Escuchadores de eventos para cerrar (Botón de cierre, fondo y tecla ESC)
+    if (closeVideoModal) {
+        closeVideoModal.addEventListener('click', hideVideoModal);
+    }
+
+    videoModal.addEventListener('click', (e) => {
+        if (e.target === videoModal) hideVideoModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+            hideVideoModal();
+        }
+    });
+}

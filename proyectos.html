@@ -16,51 +16,57 @@
 
     <div class="menu-overlay" id="menuOverlay"></div>
 
-<aside class="side-menu" id="sideMenu">
-    <div class="side-menu-header">
-        <span class="side-menu-title">LIBRARY</span>
-        <button class="close-btn" id="closeMenuBtn" aria-label="Cerrar Menú">(Close)</button>
+    <aside class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <span class="side-menu-title">LIBRARY</span>
+            <button class="close-btn" id="closeMenuBtn" aria-label="Cerrar Menú">(Close)</button>
+        </div>
+
+        <ul class="side-menu-list">
+            <li><a href="index.html" class="menu-item">Index <span>&gt;</span></a></li>
+            <li><a href="proyectos.html" class="menu-item">Selected Works <span>&gt;</span></a></li>
+            <li><a href="3d.html" class="menu-item">3D Work <span>&gt;</span></a></li>
+            <li><a href="editorial.html" class="menu-item">Editorial Design <span>&gt;</span></a></li>
+            <li><a href="graphics.html" class="menu-item">Graphics <span>&gt;</span></a></li>
+            <li><a href="photography.html" class="menu-item">Photography <span>&gt;</span></a></li>
+            <li><a href="cv.html" class="menu-item">Curriculum / About <span>&gt;</span></a></li>
+            <li><a href="contacto.html" class="menu-item">Contacto <span>&gt;</span></a></li>
+        </ul>
+    </aside>
+
+    <nav class="navbar">
+        <button class="nav-link menu-trigger" id="openMenuBtn">Menu</button>
+        <a href="proyectos.html" class="nav-link active">Proyectos</a>
+        <a href="cv.html" class="nav-link">CV</a>
+        <a href="contacto.html" class="nav-link">Contacto</a>
+    </nav>
+
+    <!-- INTRO CON TÍTULO ANIMADO -->
+    <div class="intro-title-overlay">
+        <h1 class="intro-title">PROYECTOS</h1>
     </div>
 
-    <ul class="side-menu-list">
-        <li><a href="index.html" class="menu-item">Index <span>&gt;</span></a></li>
-        <li><a href="proyectos.html" class="menu-item">Selected Works <span>&gt;</span></a></li>
-        <li><a href="3d.html" class="menu-item">3D Work <span>&gt;</span></a></li>
-        <li><a href="editorial.html" class="menu-item">Editorial Design <span>&gt;</span></a></li>
-        <li><a href="graphics.html" class="menu-item">Graphics <span>&gt;</span></a></li>
-        <li><a href="photography.html" class="menu-item">Photography <span>&gt;</span></a></li>
-        <li><a href="cv.html" class="menu-item">Curriculum / About <span>&gt;</span></a></li>
-        <li><a href="contacto.html" class="menu-item">Contacto <span>&gt;</span></a></li>
-    </ul>
-</aside>
-
-<nav class="navbar">
-    <button class="nav-link menu-trigger" id="openMenuBtn">Menu</button>
-    <a href="proyectos.html" class="nav-link active">Proyectos</a>
-    <a href="cv.html" class="nav-link">CV</a>
-    <a href="contacto.html" class="nav-link">Contacto</a>
-</nav>
-
+    <!-- SUBTÍTULO Y RETÍCULA -->
     <h2 class="subtitle-proyects">Selección de trabajos centrados en branding, diseño editorial, modelado 3D y producción de vídeo. <br> Proyectos abordados desde una perspectiva creativa y conceptual, <br>adaptados tanto a formatos digitales como impresos.</h2>
 
     <main class="projects-checkerboard">
 
         <article class="board-card image-card">
-            <a href="3d.html" class="key-card">
-                <img src="img/_T7A8019.jpg" alt="3D Work">
+            <a href="TFG.html" class="key-card">
+                <img src="img/_T7A8019.jpg" alt="TFG">
                 <div class="card-overlay">
-                    <span class="overlay-text">3D WORK</span>
+                    <span class="overlay-text">TFG</span>
                 </div>
             </a>
         </article>
 
         <article class="board-card text-card">
-            <h2 class="card-text">Saturday</h2>
+            <h2 class="card-text"></h2>
         </article>
 
         <article class="board-card image-card">
             <a href="editorial.html" class="key-card">
-                <img src="img/field pants vertical.JPG" alt="Editorial">
+                <img src="img/editorial/taza cafe.png" alt="Editorial">
                 <div class="card-overlay">
                     <span class="overlay-text">EDITORIAL</span>
                 </div>
@@ -68,16 +74,12 @@
         </article>
 
         <article class="board-card text-card">
-            <h2 class="card-text">memories</h2>
-        </article>
-
-        <article class="board-card text-card">
-            <h2 class="card-text">captured</h2>
+            <h2 class="card-text"></h2>
         </article>
 
         <article class="board-card image-card">
             <a href="graphics.html" class="key-card">
-                <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=800&q=80" alt="Graphics">
+                <img src="img/carteles/emory mockup cartel.png" alt="Graphics">
                 <div class="card-overlay">
                     <span class="overlay-text">GRAPHICS</span>
                 </div>
@@ -85,21 +87,25 @@
         </article>
 
         <article class="board-card text-card">
-            <h2 class="card-text">in</h2>
+            <h2 class="card-text"></h2>
         </article>
 
         <article class="board-card image-card">
             <a href="photography.html" class="key-card">
-                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" alt="Photography">
+                <img src="img/19070026.JPG" alt="Photography">
                 <div class="card-overlay">
                     <span class="overlay-text">PHOTOGRAPHY</span>
                 </div>
             </a>
         </article>
 
+        <article class="board-card text-card">
+            <h2 class="card-text"></h2>
+        </article>
+
         <article class="board-card image-card">
             <a href="shorts.html" class="key-card">
-                <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&q=80" alt="Shorts">
+                <img src="img/avalon/fotos/_T7A7925.jpg" alt="Shorts">
                 <div class="card-overlay">
                     <span class="overlay-text">SHORTS</span>
                 </div>
@@ -107,49 +113,65 @@
         </article>
 
         <article class="board-card text-card">
-            <h2 class="card-text">frames</h2>
+            <h2 class="card-text"></h2>
         </article>
 
         <article class="board-card image-card">
             <a href="3d.html" class="key-card">
-                <img src="https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80" alt="Renders">
+                <img src="img/3D/escena conchas0048.png" alt="Renders">
                 <div class="card-overlay">
                     <span class="overlay-text">RENDERS</span>
                 </div>
             </a>
         </article>
 
-        <article class="board-card text-card">
-            <h2 class="card-text">of</h2>
-        </article>
-
-        <article class="board-card text-card">
-            <h2 class="card-text">pure</h2>
-        </article>
-
-        <article class="board-card image-card">
-            <a href="cv.html" class="key-card">
-                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80" alt="Curriculum">
-                <div class="card-overlay">
-                    <span class="overlay-text">CURRICULUM</span>
-                </div>
-            </a>
-        </article>
-
-        <article class="board-card text-card">
-            <h2 class="card-text">joy</h2>
-        </article>
-
-        <article class="board-card image-card">
-            <a href="contacto.html" class="key-card">
-                <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=800&q=80" alt="Contact">
-                <div class="card-overlay">
-                    <span class="overlay-text">CONTACT</span>
-                </div>
-            </a>
-        </article>
-
     </main>
+
+    <footer class="site-footer">
+        <div class="footer-bg">
+            <img src="img/bnwfooter.jpg" alt="Footer Background">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="footer-canvas">
+            <div class="text-node main-collab-text">
+                LET'S WORK<br>TOGETHER.
+            </div>
+
+            <div class="text-node top-handle">
+                @byeme
+            </div>
+
+            <a href="3d.html" class="text-node float-link pos-1">3D Work</a>
+            <a href="editorial.html" class="text-node float-link pos-2">Editorial Design</a>
+            <a href="graphics.html" class="text-node float-link pos-3">Graphics</a>
+            <a href="photography.html" class="text-node float-link pos-4">Photography</a>
+            <a href="shorts.html" class="text-node float-link pos-5">Shorts &amp; Video</a>
+            <a href="cv.html" class="text-node float-link pos-6">Curriculum Vitae</a>
+
+            <div class="text-node concept-tag pos-7">Visual Identity</div>
+            <div class="text-node concept-tag pos-8">Art Direction</div>
+            <div class="text-node concept-tag pos-9">Branding</div>
+            <div class="text-node concept-tag pos-10">Creative Process</div>
+
+            <div class="text-node big-callout">
+                Available for freelance<br>
+                &amp; creative collaborations.<br>
+                <span>Drop a line &rarr;</span>
+            </div>
+
+            <div class="text-node bottom-left-info">
+                <span class="info-label">Contact / Social</span><br>
+                <a href="mailto:hello@byeme.com">hello@byeme.com</a><br>
+                <a href="https://instagram.com" target="_blank">Instagram: @byeme</a>
+            </div>
+
+            <div class="text-node bottom-right-info">
+                <a href="contacto.html" class="nav-contact-btn">Contacto</a><br>
+                <span class="copyright-text">© 2026 @byeme. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>

@@ -41,10 +41,25 @@
     <a href="contacto.html" class="nav-link">Contacto</a>
 </nav>
 
+<!-- BARRA SUPERIOR DE FILTRADO DE ETIQUETAS -->
+<div class="filter-tags-container">
+    <span class="filter-title">Filtrar:</span>
+    <button class="tag-bookmark active" data-filter="all">Todos</button>
+    <button class="tag-bookmark" data-filter="fotografia">Fotografía</button>
+    <button class="tag-bookmark" data-filter="editorial">Editorial</button>
+    <button class="tag-bookmark" data-filter="direccion-arte">Dirección de Arte</button>
+    <button class="tag-bookmark" data-filter="photoshop">Photoshop</button>
+    <button class="tag-bookmark" data-filter="lightroom">Lightroom</button>
+    <button class="tag-bookmark" data-filter="illustrator">Illustrator</button>
+    <button class="tag-bookmark" data-filter="InDesign">InDesign</button>
+
+</div>
+
 
 <main class="editorial-container">
 
-    <article class="editorial-project">
+    <!-- PROYECTO 1: TWIN PEAKS x 032c -->
+    <article class="editorial-project" data-tags="fotografia editorial direccion-arte photoshop lightroom illustrator">
         
         <header class="project-header-grid">
             <div class="header-col-left">
@@ -64,6 +79,17 @@
                 <p class="secondary-annotation">
                     La joyería actúa como elemento narrativo principal, integrándose en cada composición para reforzar el concepto visual.
                 </p>
+            </div>
+
+            <div class="body-col-right">
+                <div class="project-tags-wrapper">
+                    <span class="tag-bookmark">Fotografía</span>
+                    <span class="tag-bookmark">Editorial</span>
+                    <span class="tag-bookmark">Dirección de Arte</span>
+                    <span class="tag-bookmark">Photoshop</span>
+                    <span class="tag-bookmark">Lightroom</span>
+                    <span class="tag-bookmark">Illustrator</span>
+                </div>
             </div>
         </div>
 
@@ -87,19 +113,25 @@
 
     </article>
 
-    </main>
+</main>
 
-    <main class="editorial-container">
+<main class="editorial-container">
 
-    <article class="editorial-project">
+    <!-- PROYECTO DUPLICADO: YPUNTO -->
+    <article class="editorial-project" data-tags="fotografia editorial  photoshop lightroom illustrator InDesign">
         
         <header class="project-header-grid">
             <div class="header-col-left">
-                <p class="project-headline">We're for the bold and<br>the self-assured.</p>
+                <p class="project-headline">Revista - ypunto</p>
             </div>
             <div class="header-col-right">
                 <p class="project-description">
-                    Those who aren't afraid to break away from the pack and try something new or different. Those who lead. Those who realize you don't fix a broken system, you build a better one. Those who break down walls, break into parties and break some hearts along the way. But most of all, break the status quo.
+                    Y Punto es una revista ficticia independiente que nace como un punto de encuentro entre moda, arte, diseño, música, cine y cultura visual, con una mirada fresca, auténtica y sin filtros. Esta primera edición representa la materialización de un proyecto que busca visibilizar talento emergente y generar una experiencia editorial viva, interactiva y cercana. 
+                    <br>
+                    <br>
+                    <br>
+                    
+                    "y punto" o "y." funciona como un concepto abierto y versátil: puede aplicarse tanto a ideas editoriales (“esto es arte emergente, y punto”) como a valores de marca (“somos independientes, y punto”). Es fácil de recordar, visualmente limpio, adaptable gráficamente, y fonéticamente contundente. Su brevedad y doble sentido lo convierten en un naming con personalidad, coherente con el tono joven, urbano y auténtico.
                 </p>
             </div>
         </header>
@@ -109,154 +141,141 @@
         <div class="project-body-grid">
             <div class="body-col-left">
                 <p class="secondary-annotation">
-                    And denim? It's best when<br>broken in. So let's break<br>from tradition, and raise<br>something new.
+                    Es una declaración de identidad que condensa en dos palabras la esencia del proyecto: decir lo que queremos decir, mostrar lo que queremos mostrar, y hacerlo sin pedir permiso.
                 </p>
+            </div>
+
+            <div class="body-col-right">
+                <div class="project-tags-wrapper">
+                    <span class="tag-bookmark">Fotografía</span>
+
+                    <span class="tag-bookmark">Photoshop</span>
+                    <span class="tag-bookmark">Lightroom</span>
+                    <span class="tag-bookmark">InDesign</span>
+                </div>
             </div>
         </div>
 
         <div class="image-strip-seamless">
             <div class="gallery-item lightbox-trigger">
-                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" alt="Frame 1">
+                <img src="img/editorial/addison izq.png" alt="Frame 1">
             </div>
             <div class="gallery-item lightbox-trigger">
-                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80" alt="Frame 2">
+                <img src="img/editorial/addison der.png" alt="Frame 2">
             </div>
             <div class="gallery-item lightbox-trigger">
-                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80" alt="Frame 3">
+                <img src="img/editorial/doechii der.png" alt="Frame 3">
+            </div>
+             <div class="gallery-item lightbox-trigger">
+                <img src="img/editorial/doechii izq.png" alt="Frame 3">
+            </div>
+             <div class="gallery-item lightbox-trigger">
+                <img src="img/editorial/portada ypunto.png" alt="Frame 3">
             </div>
         </div>
 
     </article>
 
-    </main>
+</main>
 
-    <main class="editorial-container">
 
-    <article class="editorial-project">
-        
-        <header class="project-header-grid">
-            <div class="header-col-left">
-                <p class="project-headline">We're for the bold and<br>the self-assured.</p>
-            </div>
-            <div class="header-col-right">
-                <p class="project-description">
-                    Those who aren't afraid to break away from the pack and try something new or different. Those who lead. Those who realize you don't fix a broken system, you build a better one. Those who break down walls, break into parties and break some hearts along the way. But most of all, break the status quo.
-                </p>
-            </div>
-        </header>
 
-        <hr class="editorial-divider">
 
-        <div class="project-body-grid">
-            <div class="body-col-left">
-                <p class="secondary-annotation">
-                    And denim? It's best when<br>broken in. So let's break<br>from tradition, and raise<br>something new.
-                </p>
-            </div>
+<footer class="site-footer">
+    <div class="footer-bg">
+        <img src="img/bnwfooter.jpg" alt="Footer Background">
+        <div class="overlay"></div>
+    </div>
+
+    <div class="footer-canvas">
+        <div class="text-node main-collab-text">
+            LET'S WORK<br>TOGETHER.
         </div>
 
-        <div class="image-strip-seamless">
-            <div class="gallery-item lightbox-trigger">
-                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" alt="Frame 1">
-            </div>
-            <div class="gallery-item lightbox-trigger">
-                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80" alt="Frame 2">
-            </div>
-            <div class="gallery-item lightbox-trigger">
-                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80" alt="Frame 3">
-            </div>
+        <div class="text-node top-handle">
+            @byeme
         </div>
 
-    </article>
+        <a href="3d.html" class="text-node float-link pos-1">3D Work</a>
+        <a href="editorial.html" class="text-node float-link pos-2">Editorial Design</a>
+        <a href="graphics.html" class="text-node float-link pos-3">Graphics</a>
+        <a href="photography.html" class="text-node float-link pos-4">Photography</a>
+        <a href="shorts.html" class="text-node float-link pos-5">Shorts &amp; Video</a>
+        <a href="cv.html" class="text-node float-link pos-6">Curriculum Vitae</a>
 
-    </main>
+        <div class="text-node concept-tag pos-7">Visual Identity</div>
+        <div class="text-node concept-tag pos-8">Art Direction</div>
+        <div class="text-node concept-tag pos-9">Branding</div>
+        <div class="text-node concept-tag pos-10">Creative Process</div>
 
-    <main class="editorial-container">
 
-    <article class="editorial-project">
-        
-        <header class="project-header-grid">
-            <div class="header-col-left">
-                <p class="project-headline">We're for the bold and<br>the self-assured.</p>
-            </div>
-            <div class="header-col-right">
-                <p class="project-description">
-                    Those who aren't afraid to break away from the pack and try something new or different. Those who lead. Those who realize you don't fix a broken system, you build a better one. Those who break down walls, break into parties and break some hearts along the way. But most of all, break the status quo.
-                </p>
-            </div>
-        </header>
-
-        <hr class="editorial-divider">
-
-        <div class="project-body-grid">
-            <div class="body-col-left">
-                <p class="secondary-annotation">
-                    And denim? It's best when<br>broken in. So let's break<br>from tradition, and raise<br>something new.
-                </p>
-            </div>
+        <div class="text-node big-callout">
+            Available for freelance<br>
+            &amp; creative collaborations.<br>
+            <span>Drop a line &rarr;</span>
         </div>
 
-        <div class="image-strip-seamless">
-            <div class="gallery-item lightbox-trigger">
-                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" alt="Frame 1">
-            </div>
-            <div class="gallery-item lightbox-trigger">
-                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80" alt="Frame 2">
-            </div>
-            <div class="gallery-item lightbox-trigger">
-                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80" alt="Frame 3">
-            </div>
+        <div class="text-node bottom-left-info">
+            <span class="info-label">Contact / Social</span><br>
+            <a href="mailto:hello@byeme.com">hello@byeme.com</a><br>
+            <a href="https://instagram.com" target="_blank">Instagram: @byeme</a>
         </div>
 
-    </article>
-
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-bg">
-            <img src="img/bnwfooter.jpg" alt="Footer Background">
-            <div class="overlay"></div>
+        <div class="text-node bottom-right-info">
+            <a href="contacto.html" class="nav-contact-btn">Contacto</a><br>
+            <span class="copyright-text">© 2026 @byeme. All rights reserved.</span>
         </div>
+    </div>
+</footer>
 
-        <div class="footer-canvas">
-            <div class="text-node main-collab-text">
-                LET'S WORK<br>TOGETHER.
-            </div>
+<!-- SCRIPT DE FILTRADO MULTI-ETIQUETA -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const filterButtons = document.querySelectorAll('.filter-tags-container .tag-bookmark');
+        const projects = document.querySelectorAll('.editorial-project');
+        let selectedFilters = new Set();
 
-            <div class="text-node top-handle">
-                @byeme
-            </div>
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.getAttribute('data-filter');
 
-            <a href="3d.html" class="text-node float-link pos-1">3D Work</a>
-            <a href="editorial.html" class="text-node float-link pos-2">Editorial Design</a>
-            <a href="graphics.html" class="text-node float-link pos-3">Graphics</a>
-            <a href="photography.html" class="text-node float-link pos-4">Photography</a>
-            <a href="shorts.html" class="text-node float-link pos-5">Shorts &amp; Video</a>
-            <a href="cv.html" class="text-node float-link pos-6">Curriculum Vitae</a>
+                if (filter === 'all') {
+                    selectedFilters.clear();
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                } else {
+                    document.querySelector('[data-filter="all"]').classList.remove('active');
 
-            <div class="text-node concept-tag pos-7">Visual Identity</div>
-            <div class="text-node concept-tag pos-8">Art Direction</div>
-            <div class="text-node concept-tag pos-9">Branding</div>
-            <div class="text-node concept-tag pos-10">Creative Process</div>
+                    if (selectedFilters.has(filter)) {
+                        selectedFilters.delete(filter);
+                        btn.classList.remove('active');
+                    } else {
+                        selectedFilters.add(filter);
+                        btn.classList.add('active');
+                    }
 
-            <div class="text-node big-callout">
-                Available for freelance<br>
-                &amp; creative collaborations.<br>
-                <span>Drop a line &rarr;</span>
-            </div>
+                    if (selectedFilters.size === 0) {
+                        document.querySelector('[data-filter="all"]').classList.add('active');
+                    }
+                }
 
-            <div class="text-node bottom-left-info">
-                <span class="info-label">Contact / Social</span><br>
-                <a href="mailto:hello@byeme.com">hello@byeme.com</a><br>
-                <a href="https://instagram.com" target="_blank">Instagram: @byeme</a>
-            </div>
+                projects.forEach(project => {
+                    const projectTags = (project.getAttribute('data-tags') || '').split(' ');
 
-            <div class="text-node bottom-right-info">
-                <a href="contacto.html" class="nav-contact-btn">Contacto</a><br>
-                <span class="copyright-text">© 2026 @byeme. All rights reserved.</span>
-            </div>
-        </div>
-    </footer>
-
+                    if (selectedFilters.size === 0) {
+                        project.closest('.editorial-container').style.display = 'block';
+                    } else {
+                        const hasAllTags = Array.from(selectedFilters).every(tag => projectTags.includes(tag));
+                        if (hasAllTags) {
+                            project.closest('.editorial-container').style.display = 'block';
+                        } else {
+                            project.closest('.editorial-container').style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+    });
+</script>
 </body>
 </html>

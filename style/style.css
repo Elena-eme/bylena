@@ -192,6 +192,8 @@ body {
     transform: translateX(3px);
 }
 
+
+
 /* --- Sección 1: Frase --- */
 .hero-section {
     min-height: 100vh;
@@ -690,6 +692,52 @@ body {
    GALERÍA GRID (PROYECTOS / CHECKERBOARD)
    ========================================== */
 
+/* --- ANIMACIÓN INTRO TÍTULO --- */
+
+/* Pantalla superpuesta que ocupa toda la vista */
+.intro-title-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff; /* Ajusta al fondo de tu web si es oscuro (#000) */
+    z-index: 9999;
+    pointer-events: none; /* Permite interactuar con la web tras desaparecer */
+    animation: slideUpIntro 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    animation-delay: 1s; /* Tiempo que permanece centrado en pantalla antes de subir */
+}
+
+/* Estilo del título centrado */
+.intro-title {
+    font-size: 8rem; /* Tamaño grande ajustado */
+    font-weight: 600;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0;
+}
+
+/* Animación de desplazamiento hacia arriba */
+@keyframes slideUpIntro {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100vh);
+    }
+}
+
+/* Responsivo para móviles */
+@media (max-width: 768px) {
+    .intro-title {
+        font-size: 3.5rem;
+    }
+}
+
 .projects-page {
     background-color: #ffffff;
     color: #111111;
@@ -880,6 +928,8 @@ body.index-page {
    MAQUETA EDITORIAL
    ========================================== */
 
+
+
 .editorial-page {
     background-color: #f7f6f2;
     color: #000000;
@@ -1038,6 +1088,78 @@ body.index-page {
         flex-direction: column;
     }
 }
+
+/* ==========================================
+   EDITORIAL: SISTEMA DE ETIQUETAS (BOOKMARKS)
+   ========================================== */
+
+/* Contenedor del filtro superior */
+.filter-tags-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 100px auto 30px auto;
+    padding: 0 4vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888888;
+    margin-right: 12px;
+    font-weight: 300;
+}
+
+/* Diseño de la etiqueta tipo Bookmark (Marcapáginas) */
+.tag-bookmark {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 18px 4px 10px;
+    font-size: 11px;
+    color: #333333;
+    background-color: rgba(220, 220, 220, 0.45); /* Gris translúcido */
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.25s ease, color 0.25s ease, opacity 0.3s ease;
+    
+    /* Recorte triangular en el extremo derecho */
+    clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%);
+}
+
+/* Hover: Fondo gris sólido */
+.tag-bookmark:hover {
+    background-color: #d1d1d1;
+    color: #000000;
+}
+
+/* Estado activo para el filtro seleccionado */
+.tag-bookmark.active {
+    background-color: #111111;
+    color: #ffffff;
+}
+
+/* Contenedor de etiquetas flotantes dentro de las secciones */
+.project-tags-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+/* Animación y ocultado al filtrar */
+.editorial-item {
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.editorial-item-hidden {
+    display: none !important;
+}
+
 
 /* ==========================================
    CARRUSEL EDITORIAL (GRAPHICS)
@@ -1694,5 +1816,211 @@ body.index-page {
     .box-square-medium,
     .box-vertical-video {
         height: 350px;
+    }
+}
+
+/* VIDEO */
+
+/* ==========================================================================
+   PÁGINA DE VÍDEO: TARJETERO PANTONE Y MODAL EXPANDIBLE
+   ========================================================================== */
+
+/* Variables de Color Pantone (Muestra de referencia) */
+:root {
+    --color-yellow: #640b08;
+    --color-white:  #ffc4d5;
+    --color-pink:   #2b160f;
+    --color-black:  #f7dba9;
+    --color-steel:  #252645;
+    --color-red:    #ddddeb;
+}
+
+/* Contenedor Principal (Efecto Tarjetero en Rejilla) */
+.video-grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    padding: 120px 60px 120px 60px;
+    margin-bottom: 200px;
+    min-height: 100vh;
+    overflow: hidden; /* Evita desbordamientos durante la animación */
+}
+
+/* Tarjeta Troquelada Base */
+.folder-card {
+    position: relative;
+    height: 280px;
+    padding: 30px;
+    cursor: pointer;
+    margin-bottom: -90px; /* Superposición para ocultar parcialmente la de abajo */
+    transform: translateY(40px); /* Posición inicial metida en el tarjetero */
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08), inset 0 -3px 10px rgba(0, 0, 0, 0.12);
+    will-change: transform;
+}
+
+/* Efecto Hover: La tarjeta "sale" del tarjetero hacia arriba */
+.folder-card:hover {
+    transform: translateY(-30px); /* Se eleva y se muestra entera */
+    z-index: 50;
+    box-shadow: 0 25px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* Troquelado semicircular superior */
+.folder-card .notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 40px;
+    background-color: #ffffff; /* Color del fondo para simular el recorte */
+    border-bottom-left-radius: 90px;
+    border-bottom-right-radius: 90px;
+    
+}
+
+/* Asignación de Colores Pantone a las Tarjetas */
+.card-yellow { background-color: var(--color-yellow); color: #8d1713; }
+.card-white  { background-color: var(--color-white);  color: #e080aa; }
+.card-pink   { background-color: var(--color-pink);   color: #7b481d; }
+.card-black  { background-color: var(--color-black);  color: #e1c37c; }
+.card-steel  { background-color: var(--color-steel);  color: #161739; }
+.card-red    { background-color: var(--color-red);    color: #afc0c1; }
+
+/* Distribución del contenido dentro de la tarjeta */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card-header-label {
+    display: flex;
+    gap: 20px;
+    align-items: baseline;
+}
+
+.card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.card-pantone {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.card-details p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    margin: 2px 0;
+    font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   MODAL PANTALLA COMPLETA (EXPANSIÓN DESDE LA TARJETA)
+   -------------------------------------------------------------------------- */
+.video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 20000;
+    display: none; /* Se activa mediante JavaScript */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    box-sizing: border-box;
+    transform-origin: center center; /* Se sobrescribe dinámicamente desde JS */
+}
+
+.video-modal.active {
+    display: flex;
+}
+
+/* Botón de cierre superior */
+.close-video-btn {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: inherit;
+    z-index: 10;
+}
+
+/* Contenido interior del modal */
+.modal-body {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.2s; /* Fundido suave de textos/vídeo tras expandir */
+}
+
+.video-modal.active .modal-body {
+    opacity: 1;
+}
+
+.modal-body h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.modal-body h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    opacity: 0.85;
+}
+
+.modal-body p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+/* Reproductor de Vídeo Proporcional 16:9 */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Ratio 16:9 */
+    height: 0;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive para dispositivos móviles */
+@media (max-width: 768px) {
+    .video-grid-container {
+        grid-template-columns: 1fr;
+        padding: 100px 20px 60px 20px;
+    }
+
+    .folder-card {
+        margin-bottom: -60px;
+    }
+
+    .modal-body h1 {
+        font-size: 2rem;
     }
 }

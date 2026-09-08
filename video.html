@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video — @byeme</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style/style.css">
+    <script src="scrpt/script.js" defer></script>
+</head>
+<body class="video-page">
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <aside class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <span class="side-menu-title">LIBRARY</span>
+            <button class="close-btn" id="closeMenuBtn" aria-label="Cerrar Menú">(Close)</button>
+        </div>
+
+        <ul class="side-menu-list">
+            <li><a href="index.html" class="menu-item">Index <span>&gt;</span></a></li>
+            <li><a href="proyectos.html" class="menu-item">Selected Works <span>&gt;</span></a></li>
+            <li><a href="3d.html" class="menu-item">3D Work <span>&gt;</span></a></li>
+            <li><a href="editorial.html" class="menu-item">Editorial Design <span>&gt;</span></a></li>
+            <li><a href="graphics.html" class="menu-item">Graphics <span>&gt;</span></a></li>
+            <li><a href="photography.html" class="menu-item">Photography <span>&gt;</span></a></li>
+            <li><a href="shorts.html" class="menu-item">Video / Shorts <span>&gt;</span></a></li>
+            <li><a href="cv.html" class="menu-item">Curriculum / About <span>&gt;</span></a></li>
+            <li><a href="contacto.html" class="menu-item">Contacto <span>&gt;</span></a></li>
+        </ul>
+    </aside>
+
+    <nav class="navbar">
+        <button class="nav-link menu-trigger" id="openMenuBtn">Menu</button>
+        <a href="proyectos.html" class="nav-link">Proyectos</a>
+        <a href="cv.html" class="nav-link">CV</a>
+        <a href="contacto.html" class="nav-link">Contacto</a>
+    </nav>
+
+    <main class="video-grid-container">
+        <!-- TARJETA 1 -->
+        <article class="folder-card card-yellow" 
+                 data-title="VIDEOCLIP (REEDICION)" 
+                 data-subtitle="Mixed Media, AfterEffects"
+                 data-desc="Reedición del Videoclip (Modern Girl - The Bleachers)"
+                 data-yt="https://www.youtube.com/embed/oUfb53Kf404">
+            <div class="notch"></div>
+            <div class="card-content">
+                <div class="card-header-label">
+                    <span class="card-name">VIDEOCLIP (REEDICION)</span>
+                    <span class="card-pantone">Motion Graphics, AfterEffects</span>
+                </div>
+                <div class="card-details">
+                    <p>Reedición del Videoclip</p>
+                    <p>Modern Girl</p>
+                    <p>Bleachers</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- TARJETA 2 -->
+        <article class="folder-card card-white" 
+                 data-title="NATURAL WHITE" 
+                 data-subtitle="Pantone 7499 — #F6F1E2"
+                 data-desc="Exploración estética sobre tonos neutros y composiciones mínimas."
+                 data-yt="https://www.youtube.com/embed/dQw4w9WgXcQ">
+            <div class="notch"></div>
+            <div class="card-content">
+                <div class="card-header-label">
+                    <span class="card-name">NATURAL WHITE</span>
+                    <span class="card-pantone">Pantone 7499</span>
+                </div>
+                <div class="card-details">
+                    <p>#F6F1E2</p>
+                    <p>R: 246, 241, 226</p>
+                    <p>C: 4, 4, 13, 0</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- TARJETA 3 -->
+        <article class="folder-card card-pink" 
+                 data-title="VINTAGE PINK" 
+                 data-subtitle="Pantone 7753 — #EFCACA"
+                 data-desc="Narrativa visual pastel en formato de cortometraje de moda."
+                 data-yt="https://www.youtube.com/embed/dQw4w9WgXcQ">
+            <div class="notch"></div>
+            <div class="card-content">
+                <div class="card-header-label">
+                    <span class="card-name">VINTAGE PINK</span>
+                    <span class="card-pantone">Pantone 7753</span>
+                </div>
+                <div class="card-details">
+                    <p>#EFCACA</p>
+                    <p>R: 239, 202, 202</p>
+                    <p>C: 4, 22, 13, 0</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- TARJETA 4 -->
+        <article class="folder-card card-black" 
+                 data-title="VINTAGE BLACK" 
+                 data-subtitle="Pantone Black 7 — #2F292A"
+                 data-desc="Proyecto en penumbra y alto contraste cromático."
+                 data-yt="https://www.youtube.com/embed/dQw4w9WgXcQ">
+            <div class="notch"></div>
+            <div class="card-content">
+                <div class="card-header-label">
+                    <span class="card-name">VINTAGE BLACK</span>
+                    <span class="card-pantone">Pantone Black 7</span>
+                </div>
+                <div class="card-details">
+                    <p>#2F292A</p>
+                    <p>R: 47, 41, 42</p>
+                    <p>C: 67, 66, 62, 65</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- TARJETA 5 -->
+        <article class="folder-card card-steel" 
+                 data-title="VINTAGE STEEL" 
+                 data-subtitle="Pantone 7753 — #88A3A9"
+                 data-desc="Pieza experimental inspirada en tonos fríos e industriales."
+                 data-yt="https://www.youtube.com/embed/dQw4w9WgXcQ">
+            <div class="notch"></div>
+            <div class="card-content">
+                <div class="card-header-label">
+                    <span class="card-name">VINTAGE STEEL</span>
+                    <span class="card-pantone">Pantone 7753</span>
+                </div>
+                <div class="card-details">
+                    <p>#88A3A9</p>
+                    <p>R: 136, 163, 169</p>
+                    <p>C: 49, 27, 29, 0</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- TARJETA 6 -->
+        <article class="folder-card card-red" 
+                 data-title="VINTAGE RED" 
+                 data-subtitle="Pantone 485 — #CD422D"
+                 data-desc="Spot dinámico de alta intensidad conceptual."
+                 data-yt="https://www.youtube.com/embed/dQw4w9WgXcQ">
+            <div class="notch"></div>
+            <div class="card-content">
+                <div class="card-header-label">
+                    <span class="card-name">VINTAGE RED</span>
+                    <span class="card-pantone">Pantone 485</span>
+                </div>
+                <div class="card-details">
+                    <p>#CD422D</p>
+                    <p>R: 205, 66, 45</p>
+                    <p>C: 14, 88, 94, 3</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- MODAL DE EXPANSIÓN (FULLSCREEN DE LA TARJETA SELECCIONADA) -->
+    <div id="videoModal" class="video-modal">
+        <button id="closeVideoModal" class="close-video-btn">&times; Cerrar</button>
+        <div class="modal-body">
+            <h1 id="modalTitle"></h1>
+            <h3 id="modalSubtitle"></h3>
+            <p id="modalDesc"></p>
+            <div class="video-wrapper">
+                <iframe id="modalIframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-bg">
+            <img src="img/bnwfooter.jpg" alt="Footer Background">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="footer-canvas">
+            <div class="text-node main-collab-text">
+                LET'S WORK<br>TOGETHER.
+            </div>
+
+            <div class="text-node top-handle">
+                @byeme
+            </div>
+
+            <a href="3d.html" class="text-node float-link pos-1">3D Work</a>
+            <a href="editorial.html" class="text-node float-link pos-2">Editorial Design</a>
+            <a href="graphics.html" class="text-node float-link pos-3">Graphics</a>
+            <a href="photography.html" class="text-node float-link pos-4">Photography</a>
+            <a href="shorts.html" class="text-node float-link pos-5">Shorts &amp; Video</a>
+            <a href="cv.html" class="text-node float-link pos-6">Curriculum Vitae</a>
+
+            <div class="text-node concept-tag pos-7">Visual Identity</div>
+            <div class="text-node concept-tag pos-8">Art Direction</div>
+            <div class="text-node concept-tag pos-9">Branding</div>
+            <div class="text-node concept-tag pos-10">Creative Process</div>
+
+            <div class="text-node big-callout">
+                Available for freelance<br>
+                &amp; creative collaborations.<br>
+                <span>Drop a line &rarr;</span>
+            </div>
+
+            <div class="text-node bottom-left-info">
+                <span class="info-label">Contact / Social</span><br>
+                <a href="mailto:hello@byeme.com">hello@byeme.com</a><br>
+                <a href="https://instagram.com" target="_blank">Instagram: @byeme</a>
+            </div>
+
+            <div class="text-node bottom-right-info">
+                <a href="contacto.html" class="nav-contact-btn">Contacto</a><br>
+                <span class="copyright-text">© 2026 @byeme. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
