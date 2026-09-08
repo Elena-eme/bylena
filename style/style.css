@@ -1825,28 +1825,35 @@ body.index-page {
    PÁGINA DE VÍDEO: TARJETERO PANTONE Y MODAL EXPANDIBLE
    ========================================================================== */
 
-/* Variables de Color Pantone (Muestra de referencia) */
+/* Variables de Color Pantone (Tus nuevos tonos actualizados) */
 :root {
-    --color-yellow: #640b08;
-    --color-white:  #ffc4d5;
-    --color-pink:   #2b160f;
-    --color-black:  #f7dba9;
-    --color-steel:  #252645;
-    --color-red:    #ddddeb;
+    --color-yellow: #F3EED7;
+    --color-white:  #A15D66;
+    --color-pink:   #DFD6A4;
+    --color-black:  #808249;
+    --color-steel:  #E1B4A1;
+    --color-red:    #321F12;
 }
 
-/* Contenedor Principal (Efecto Tarjetero en Rejilla) */
+/* Contenedor Principal (Efecto Tarjetero con Fondo Fijo de Pexels) */
 .video-grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0;
-    padding: 120px 60px 120px 60px;
-    margin-bottom: 200px;
+    padding: 120px 60px 280px 60px;
+    
     min-height: 100vh;
-    overflow: hidden; /* Evita desbordamientos durante la animación */
+    overflow: hidden;
+
+    /* Imagen de fondo fija */
+    background-image: url('https://images.pexels.com/photos/10388750/pexels-photo-10388750.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
-/* Tarjeta Troquelada Base */
+/* Tarjeta Troquelada Base con Recorte Transparente */
 .folder-card {
     position: relative;
     height: 280px;
@@ -1855,38 +1862,28 @@ body.index-page {
     margin-bottom: -90px; /* Superposición para ocultar parcialmente la de abajo */
     transform: translateY(40px); /* Posición inicial metida en el tarjetero */
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08), inset 0 -3px 10px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
     will-change: transform;
+
+    /* Máscara CSS: hace el troquel transparente real para ver lo que hay detrás */
+    -webkit-mask-image: radial-gradient(circle 40px at top 0px center, transparent 99%, black 100%);
+    mask-image: radial-gradient(circle 40px at top 0px center, transparent 99%, black 100%);
 }
 
 /* Efecto Hover: La tarjeta "sale" del tarjetero hacia arriba */
 .folder-card:hover {
     transform: translateY(-30px); /* Se eleva y se muestra entera */
     z-index: 50;
-    box-shadow: 0 25px 35px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 25px 35px rgba(0, 0, 0, 0.35);
 }
 
-/* Troquelado semicircular superior */
-.folder-card .notch {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 40px;
-    background-color: #ffffff; /* Color del fondo para simular el recorte */
-    border-bottom-left-radius: 90px;
-    border-bottom-right-radius: 90px;
-    
-}
-
-/* Asignación de Colores Pantone a las Tarjetas */
-.card-yellow { background-color: var(--color-yellow); color: #8d1713; }
-.card-white  { background-color: var(--color-white);  color: #e080aa; }
-.card-pink   { background-color: var(--color-pink);   color: #7b481d; }
-.card-black  { background-color: var(--color-black);  color: #e1c37c; }
-.card-steel  { background-color: var(--color-steel);  color: #161739; }
-.card-red    { background-color: var(--color-red);    color: #afc0c1; }
+/* Asignación de tus nuevos Colores Pantone y sus contrastes de texto */
+.card-yellow { background-color: var(--color-yellow); color: #A15D66; }
+.card-white  { background-color: var(--color-white);  color: #DFD6A4; }
+.card-pink   { background-color: var(--color-pink);   color: #808249; }
+.card-black  { background-color: var(--color-black);  color: #E1B4A1; }
+.card-steel  { background-color: var(--color-steel);  color: #321F12; }
+.card-red    { background-color: var(--color-red);    color: #F3EED7; }
 
 /* Distribución del contenido dentro de la tarjeta */
 .card-content {
@@ -2014,6 +2011,7 @@ body.index-page {
     .video-grid-container {
         grid-template-columns: 1fr;
         padding: 100px 20px 60px 20px;
+        background-attachment: scroll; /* Suaviza el rendimiento en navegadores móviles */
     }
 
     .folder-card {
