@@ -4,174 +4,180 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Graphics — @byeme</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Cinzel:wght@400..900&family=Fasthand&family=GFS+Didot&family=Hubballi&family=Krona+One&family=Pinyon+Script&family=Slabo+13px&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style/style.css">
     <script src="scrpt/script.js" defer></script>
 </head>
 <body class="graphics-page">
 
+    <div class="graphics-bg-fixed"></div>
+
     <div class="menu-overlay" id="menuOverlay"></div>
 
-<aside class="side-menu" id="sideMenu">
-    <div class="side-menu-header">
-        <span class="side-menu-title">LIBRARY</span>
-        <button class="close-btn" id="closeMenuBtn" aria-label="Cerrar Menú">(Close)</button>
+    <aside class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <span class="side-menu-title">LIBRARY</span>
+            <button class="close-btn" id="closeMenuBtn" aria-label="Cerrar Menú">(Close)</button>
+        </div>
+        <ul class="side-menu-list">
+            <li><a href="index.html" class="menu-item">Index <span>&gt;</span></a></li>
+            <li><a href="proyectos.html" class="menu-item">Selected Works <span>&gt;</span></a></li>
+            <li><a href="3d.html" class="menu-item">3D Work <span>&gt;</span></a></li>
+            <li><a href="editorial.html" class="menu-item">Editorial Design <span>&gt;</span></a></li>
+            <li><a href="graphics.html" class="menu-item">Graphics <span>&gt;</span></a></li>
+            <li><a href="photography.html" class="menu-item">Photography <span>&gt;</span></a></li>
+            <li><a href="video.html" class="menu-item">Video / Shorts <span>&gt;</span></a></li>
+            <li><a href="cv.html" class="menu-item">Curriculum / About <span>&gt;</span></a></li>
+            <li><a href="contacto.html" class="menu-item">Contacto <span>&gt;</span></a></li>
+        </ul>
+    </aside>
+
+    <nav class="navbar">
+        <button class="nav-link menu-trigger" id="openMenuBtn">Menu</button>
+        <a href="proyectos.html" class="nav-link">Proyectos</a>
+        <a href="cv.html" class="nav-link">CV</a>
+        <a href="contacto.html" class="nav-link">Contacto</a>
+    </nav>
+
+<section class="carousel-section">
+    <!-- PANEL DE INFORMACIÓN DINÁMICO (IZQUIERDA) -->
+    <div class="carousel-info-panel">
+        <h2 id="infoTitle" class="info-title">The Coast Starlight</h2>
+        <p id="infoDesc" class="info-desc">
+            A three-day journey along the Pacific coast from Los Angeles to Seattle with iconic rail views.
+        </p>
+        <button id="viewMoreBtn" class="view-more-link">
+            <span>Ver más</span>
+            <span class="arrow">&rarr;</span>
+        </button>
     </div>
 
-    <ul class="side-menu-list">
-        <li><a href="index.html" class="menu-item">Index <span>&gt;</span></a></li>
-        <li><a href="proyectos.html" class="menu-item">Selected Works <span>&gt;</span></a></li>
-        <li><a href="3d.html" class="menu-item">3D Work <span>&gt;</span></a></li>
-        <li><a href="editorial.html" class="menu-item">Editorial Design <span>&gt;</span></a></li>
-        <li><a href="graphics.html" class="menu-item">Graphics <span>&gt;</span></a></li>
-        <li><a href="photography.html" class="menu-item">Photography <span>&gt;</span></a></li>
-        <li><a href="cv.html" class="menu-item">Curriculum / About <span>&gt;</span></a></li>
-        <li><a href="contacto.html" class="menu-item">Contacto <span>&gt;</span></a></li>
-    </ul>
-</aside>
-
-<nav class="navbar">
-    <button class="nav-link menu-trigger" id="openMenuBtn">Menu</button>
-    <a href="proyectos.html" class="nav-link active">Proyectos</a>
-    <a href="cv.html" class="nav-link">CV</a>
-    <a href="contacto.html" class="nav-link">Contacto</a>
-</nav>
-
-    <main class="carousel-section">
-
-        <div class="hover-info-box" id="hoverInfo">
-            <span class="info-tag">(GRAPHIC ARCHIVE)</span>
-            <p class="info-text">Muestra de proyectos en medios físicos y digitales — by eme (SS24 - SS26)</p>
-        </div>
-
-        <div class="carousel-track-container" id="carouselTrack">
-            <div class="carousel-track">
+    <!-- CARRUSEL CON FLECHAS Y TARJETAS (DERECHA) -->
+    <div class="carousel-wrapper">
+        <button class="carousel-arrow prev" id="prevBtn" aria-label="Anterior">&larr;</button>
+        
+        <div class="carousel-track-container" id="trackContainer">
+            <div class="carousel-track" id="carouselTrack">
                 
-                <div class="carousel-item lightbox-trigger" 
-                     data-title="Ashton Cartel" 
-                     data-info="(01) ASHTON CARTEL — POSTER DESIGN, ©2026">
-                    <img src="img/carteles/ashton cartel.png" alt="Ashton Cartel">
+                <!-- Tarjeta 1 -->
+                <div class="project-card active" 
+                     data-title="Expo Emory Douglas" 
+                     data-desc="Diseño de Carteles, Entradas, Catálogos,...">
+                    <div class="card-img-wrapper">
+                        <img src="img/carteles/emory 1.png" alt="Coast Starlight">
+                    </div>
+                    <div class="card-paper-tag">
+                        <span class="tag-title">Emory Douglas</span>
+                        <span class="tag-desc">Exposición</span>
+                    </div>
                 </div>
 
-                <div class="carousel-item lightbox-trigger" 
-                     data-title="Emory 1" 
-                     data-info="(02) EMORY 1 — GRAPHIC LAYOUT">
-                    <img src="img/carteles/emory 1.png" alt="Emory 1">
+                <!-- Tarjeta 2 -->
+                <div class="project-card" 
+                     data-title="Cartel álbum" 
+                     data-desc="Diseño Cartel Álbum Asthon Irwin">
+                    <div class="card-img-wrapper">
+                        <img src="img/carteles/ashton cartel.png" alt="Grand Canyon Railway">
+                    </div>
+                    <div class="card-paper-tag">
+                        <span class="tag-title">GRAND CANYON</span>
+                        <span class="tag-desc">ARIZONA ROUTE</span>
+                    </div>
                 </div>
 
-                <div class="carousel-item landscape-hover lightbox-trigger" 
-                     data-title="Poster Chupachups" 
-                     data-info="(03) MOCKUP POSTER CHUPACHUPS — BRANDING">
-                    <img src="img/carteles/mockup poster chupachups.png" alt="Mockup Poster Chupachups">
-                </div>
-
-                <div class="carousel-item landscape-hover lightbox-trigger" 
-                     data-title="Emory Poster H" 
-                     data-info="(04) EMORY MOCKUP CARTEL H — HORIZONTAL FORM">
-                    <img src="img/carteles/emory mockup cartel h.png" alt="Emory Mockup Cartel H">
-                </div>
-
-                <div class="carousel-item lightbox-trigger" 
-                     data-title="Emory Poster V" 
-                     data-info="(05) EMORY MOCKUP CARTEL — VERTICAL POSTER">
-                    <img src="img/carteles/emory mockup cartel.png" alt="Emory Mockup Cartel">
-                </div>
-
-                <div class="carousel-item lightbox-trigger" 
-                     data-title="Emory Libro" 
-                     data-info="(06) EMORY LIBRO 1 — EDITORIAL COVER">
-                    <img src="img/carteles/emory libro 1.png" alt="Emory Libro 1">
-                </div>
-
-                <div class="carousel-item lightbox-trigger" 
-                     data-title="Emory Flyer" 
-                     data-info="(07) EMORY FLYER — PRINT MEDIA">
-                    <img src="img/carteles/emory flyer .png" alt="Emory Flyer">
-                </div>
-
-                <div class="carousel-item lightbox-trigger" 
-                     data-title="Graphic Concept 04" 
-                     data-info="(08) GRAPHIC CONCEPT 04 — VISUAL EXPERIMENT">
-                    <img src="img4.jpg" alt="Img 4">
-                </div>
-
-                <div class="carousel-item lightbox-trigger" 
-                     data-title="Graphic Concept 05" 
-                     data-info="(09) GRAPHIC CONCEPT 05 — ARCHIVAL PIECE">
-                    <img src="img5.jpg" alt="Img 5">
-                </div>
-
-                <div class="carousel-item lightbox-trigger" 
-                     data-title="Graphic Concept 06" 
-                     data-info="(10) GRAPHIC CONCEPT 06 — DIGITAL ART">
-                    <img src="img6.jpg" alt="Img 6">
-                </div>
-
-                <div class="carousel-item lightbox-trigger" 
-                     data-title="Graphic Concept 03" 
-                     data-info="(11) GRAPHIC CONCEPT 03 — TYPO COMPOSITION">
-                    <img src="img3.jpg" alt="Img 3">
+                <!-- Tarjeta 3 -->
+                <div class="project-card" 
+                     data-title="The Adirondack" 
+                     data-desc="From New York City to Montreal, crossing lush landscapes and international borders.">
+                    <div class="card-img-wrapper">
+                        <img src="img/proyecto3.jpg" alt="The Adirondack">
+                    </div>
+                    <div class="card-paper-tag">
+                        <span class="tag-title">THE ADIRONDACK</span>
+                        <span class="tag-desc">NYC TO MONTREAL</span>
+                    </div>
                 </div>
 
             </div>
         </div>
 
+        <button class="carousel-arrow next" id="nextBtn" aria-label="Siguiente">&rarr;</button>
+    </div>
+</section>
     </main>
 
-    <div class="lightbox-modal" id="lightboxModal">
-        <span class="lightbox-close" id="lightboxClose">&times;</span>
-        <img class="lightbox-content" id="lightboxImage" alt="Zoomed View">
+    <!-- EXPANDED SCRAPBOOK CONTAINER (REPLICA MAGNOLIA JOURNAL) -->
+    <div class="scrapbook-modal" id="scrapbookModal">
+        <button class="scrapbook-close" id="closeScrapbook" aria-label="Cerrar">&times;</button>
+        
+        <div class="journal-spread" id="journalSpread">
+            
+           
+
+            <!-- COLUMNA CENTRAL: GRILLA DE FOTOGRAFÍAS -->
+            <section class="journal-col-center">
+                <div class="img-box img-top-left">
+                    <img id="sbImg1" src="" alt="Union Station">
+                </div>
+                <div class="img-box img-bottom-wide">
+                    <img id="sbImg2" src="" alt="Locomotive train">
+                    <span class="photo-credit">PHOTOGRAPHY BY BYEME / CREATIVE STUDIO</span>
+                </div>
+            </section>
+
+            <!-- COLUMNA DERECHA: DOS FOTOS Y COLUMNA TIPOGRÁFICA -->
+            <section class="journal-col-right">
+                <div class="right-images-grid">
+                    <div class="img-box img-top-tall">
+                        <img id="sbImg3" src="" alt="Train Window">
+                    </div>
+                    <div class="img-box img-bottom-square">
+                        <img id="sbImg4" src="" alt="Passenger">
+                    </div>
+                </div>
+
+                <article class="journal-editorial-text">
+                    <header class="editorial-header">
+                        <span class="script-subtitle">Exposición</span>
+                        <h1 class="serif-title">Emory Douglas</h1>
+                    </header>
+
+                    <p class="lead-p">
+                        Trains have a rich history in America, with locomotives playing a major role in the industrial revolution and the expansion of the West.
+                    </p>
+
+                    <div class="editorial-entries">
+                        <div class="entry">
+                            <h4>The Coast Starlight</h4>
+                            <p>This three-day trip that begins in Los Angeles and ends in Seattle is Amtrak's most popular long-distance route.</p>
+                        </div>
+                        <div class="entry">
+                            <h4>Grand Canyon Railway</h4>
+                            <p>Opened in 1901, this eight-hour ride from west of Flagstaff gives you unique views.</p>
+                        </div>
+                        <div class="entry">
+                            <h4>The Adirondack</h4>
+                            <p>From New York City to Montreal, this 10-hour ride crosses beautiful terrain.</p>
+                        </div>
+                    </div>
+
+                    <footer class="journal-footer-tag">
+                        <span>59</span>
+                        <span>MAGNOLIA JOURNAL</span>
+                        <span>spring 2026</span>
+                    </footer>
+                </article>
+            </section>
+
+        </div>
     </div>
-
-    <footer class="site-footer">
-        <div class="footer-bg">
-            <img src="img/bnwfooter.jpg" alt="Footer Background">
-            <div class="overlay"></div>
-        </div>
-
-        <div class="footer-canvas">
-            <div class="text-node main-collab-text">
-                LET'S WORK<br>TOGETHER.
-            </div>
-
-            <div class="text-node top-handle">
-                @byeme
-            </div>
-
-            <a href="3d.html" class="text-node float-link pos-1">3D Work</a>
-            <a href="editorial.html" class="text-node float-link pos-2">Editorial Design</a>
-            <a href="graphics.html" class="text-node float-link pos-3">Graphics</a>
-            <a href="photography.html" class="text-node float-link pos-4">Photography</a>
-            <a href="shorts.html" class="text-node float-link pos-5">Shorts &amp; Video</a>
-            <a href="cv.html" class="text-node float-link pos-6">Curriculum Vitae</a>
-
-            <div class="text-node concept-tag pos-7">Visual Identity</div>
-            <div class="text-node concept-tag pos-8">Art Direction</div>
-            <div class="text-node concept-tag pos-9">Branding</div>
-            <div class="text-node concept-tag pos-10">Creative Process</div>
-
-            <div class="text-node big-callout">
-                Available for freelance<br>
-                &amp; creative collaborations.<br>
-                <span>Drop a line &rarr;</span>
-            </div>
-
-            <div class="text-node bottom-left-info">
-                <span class="info-label">Contact / Social</span><br>
-                <a href="mailto:hello@byeme.com">hello@byeme.com</a><br>
-                <a href="https://instagram.com" target="_blank">Instagram: @byeme</a>
-            </div>
-
-            <div class="text-node bottom-right-info">
-                <a href="contacto.html" class="nav-contact-btn">Contacto</a><br>
-                <span class="copyright-text">© 2026 @byeme. All rights reserved.</span>
-            </div>
-        </div>
-    </footer>
 
 </body>
 </html>

@@ -282,3 +282,70 @@ if (folderCards.length > 0 && videoModal) {
         }
     });
 }
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.project-card');
+    const infoTitle = document.getElementById('infoTitle');
+    const infoDesc = document.getElementById('infoDesc');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const carouselTrack = document.getElementById('carouselTrack');
+    const viewMoreBtn = document.getElementById('viewMoreBtn');
+    const scrapbookModal = document.getElementById('scrapbookModal');
+
+    let currentIndex = 0;
+    const cardWidth = 390; // Ancho tarjeta (360px) + Gap (30px)
+
+    function updateCarousel(index) {
+        if (index < 0) index = 0;
+        if (index >= cards.length) index = cards.length - 1;
+
+        currentIndex = index;
+
+        // Desplazamiento del carrusel
+        carouselTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
+        // Transición suave del texto del panel izquierdo
+        infoTitle.style.opacity = '0';
+        infoTitle.style.transform = 'translateY(8px)';
+        infoDesc.style.opacity = '0';
+        infoDesc.style.transform = 'translateY(8px)';
+
+        setTimeout(() => {
+            const activeCard = cards[currentIndex];
+            infoTitle.textContent = activeCard.dataset.title;
+            infoDesc.textContent = activeCard.dataset.desc;
+
+            infoTitle.style.opacity = '1';
+            infoTitle.style.transform = 'translateY(0)';
+            infoDesc.style.opacity = '1';
+            infoDesc.style.transform = 'translateY(0)';
+        }, 200);
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < cards.length - 1) {
+                updateCarousel(currentIndex + 1);
+            }
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                updateCarousel(currentIndex - 1);
+            }
+        });
+    }
+
+    // Al hacer clic en "Ver más", abre la revista/scrapbook
+    if (viewMoreBtn && scrapbookModal) {
+        viewMoreBtn.addEventListener('click', () => {
+            scrapbookModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    // Inicializar el primer proyecto
+    updateCarousel(0);
+});

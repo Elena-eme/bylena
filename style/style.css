@@ -1161,161 +1161,416 @@ body.index-page {
 }
 
 
-/* ==========================================
-   CARRUSEL EDITORIAL (GRAPHICS)
-   ========================================== */
-
-.graphics-page {
-    background-color: #f6f5f1;
-    color: #000000;
-    overflow-x: hidden;
-}
+/* ==========================================================================
+   GRAPHICS PAGE: CARRUSEL EDITORIAL & PANEL DINÁMICO
+   ========================================================================== */
 
 .carousel-section {
     position: relative;
     width: 100%;
-    height: calc(100vh - 80px);
-    margin-top: 80px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 80px;
+    box-sizing: border-box;
+    gap: 60px;
+}
+
+/* --------------------------------------------------------------------------
+   PANEL IZQUIERDO DE INFORMACIÓN
+   -------------------------------------------------------------------------- */
+.carousel-info-panel {
+    flex: 0 0 380px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    z-index: 2;
+}
+
+.info-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 15px 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.info-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555555;
+    margin: 0 0 25px 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Enlace "Ver más" con flecha y animación azul/subrayado */
+.view-more-link {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    display: inline-flex;
     align-items: center;
-    box-sizing: border-box;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    cursor: pointer;
+    width: fit-content;
+    position: relative;
+    text-decoration: none;
 }
 
-.hover-info-box {
+.view-more-link span {
+    position: relative;
+}
+
+/* Línea de subrayado animada */
+.view-more-link span::after {
+    content: '';
     position: absolute;
-    top: 6%;
-    left: 8%;
-    max-width: 280px;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    pointer-events: none;
-    font-family: 'Helvetica Neue', sans-serif;
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #0056b3;
+    transition: width 0.3s ease;
+}
+
+.view-more-link .arrow {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.view-more-link:hover {
+    color: #0056b3;
+}
+
+.view-more-link:hover span::after {
+    width: 100%;
+}
+
+.view-more-link:hover .arrow {
+    color: #0056b3;
+    transform: translateX(6px);
+}
+
+/* --------------------------------------------------------------------------
+   CARRUSEL (DERECHA)
+   -------------------------------------------------------------------------- */
+.carousel-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 820px;
+}
+
+.carousel-arrow {
+    background: transparent;
+    border: none;
+    color: #1a1a1a;
+    font-size: 1.6rem;
+    cursor: pointer;
     z-index: 10;
+    transition: color 0.3s ease, transform 0.3s ease;
+    padding: 10px;
+    user-select: none;
 }
 
-/* ==========================================
-   HOVER INFO BOX & CARRUSEL CON MÁSCARA
-   ========================================== */
-
-.hover-info-box.visible {
-    opacity: 1;
-    transform: translateY(0);
+.carousel-arrow:hover {
+    color: #0056b3;
+    transform: scale(1.2);
 }
 
-.hover-info-box .info-tag {
-    font-size: 0.75rem;
-    font-weight: 700;
-    display: block;
-    margin-bottom: 0.3rem;
-}
-
-.hover-info-box .info-text {
-    font-size: 0.7rem;
-    font-weight: 700;
-    line-height: 1.35;
-    text-transform: uppercase;
-    margin: 0;
-    letter-spacing: 0.02em;
-}
-
-/* --- Máscara de Desvanecimiento Lateral --- */
 .carousel-track-container {
     width: 100%;
-    overflow-x: auto;
-    scroll-behavior: smooth;
+    overflow: hidden;
     cursor: grab;
-    padding: 5rem 0 3rem 0;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-
-    -webkit-mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        black 8%,
-        black 92%,
-        transparent 100%
-    );
-    mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        black 8%,
-        black 92%,
-        transparent 100%
-    );
 }
 
-.carousel-track-container::-webkit-scrollbar {
-    display: none;
-}
-
-.carousel-track-container:active {
-    cursor: grabbing;
-}
-
-/* Pista alineada a la base */
 .carousel-track {
     display: flex;
-    align-items: flex-end;
-    gap: 20px;
-    padding: 0 6vw;
-    width: max-content;
-    height: 360px;
+    gap: 30px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
 }
 
-/* --- Tarjetas del Carrusel --- */
-.carousel-item {
-    flex-shrink: 0;
-    width: 190px;           /* Ancho fijo vertical */
-    height: 260px;          /* Alto fijo vertical (proporción 3:4) */
+/* Tarjetas un poco más grandes */
+.project-card {
     position: relative;
+    flex: 0 0 360px;
+    height: 500px;
     cursor: pointer;
-    overflow: visible;
-    transform-origin: bottom center;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    user-select: none;
 }
 
-.carousel-item img {
+.card-img-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-paper-tag {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 55%;
+    height: 55%;
+    background-color: #f2efe6;
+    background-image: radial-gradient(#d3cebe 1px, transparent 0);
+    background-size: 4px 4px;
+    padding: 18px 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 2;
+    box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.08);
+    pointer-events: none;
+}
+
+.tag-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #1a1a1a;
+}
+
+.tag-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.60rem;
+    font-weight: 400;
+    line-height: 1.35;
+    color: #444444;
+}
+
+.project-card:hover .card-img-wrapper {
+    transform: scale(1.02);
+}
+
+@media (max-width: 1024px) {
+    .carousel-section {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+    .carousel-info-panel {
+        flex: 1;
+        width: 100%;
+    }
+}
+/* --------------------------------------------------------------------------
+   SCRAPBOOK EXPANDIDO / LAYOUT REVISTA MAGNOLIA
+   -------------------------------------------------------------------------- */
+.scrapbook-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fffcf6; /* Tono crema de papel idéntico a la referencia */
+    z-index: 25000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    transform-origin: center center;
+}
+
+.scrapbook-modal.active {
+    display: flex;
+}
+
+.scrapbook-close {
+    position: fixed;
+    top: 30px;
+    right: 40px;
+    background: transparent;
+    border: none;
+    font-size: 2.2rem;
+    cursor: pointer;
+    color: #333;
+    z-index: 30000;
+}
+
+/* Grilla idéntica a la maqueta original */
+.journal-spread {
+    display: grid;
+    grid-template-columns: 260px 2.2fr 0.8fr;
+    gap: 25px;
+    max-width: 1300px;
+    width: 100%;
+    align-items: start;
+}
+
+
+
+/* Columna 2: Fotos izquierdas */
+.journal-col-center {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.img-box {
+    position: relative;
+    overflow: hidden;
+    
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.img-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    pointer-events: none;
-    background-color: #e5e5e5;
 }
 
-/* Hover: Escalado suave sin desplazar elementos adyacentes */
-.carousel-item:hover {
-    transform: scale(1.2);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    z-index: 20;
-}
+.img-top-left { height: 260px; }
+.img-bottom-wide { height: 380px; }
 
-/* Título dinámico flotante superior */
-.carousel-item::after {
-    content: attr(data-title);
+.photo-credit {
     position: absolute;
-    bottom: calc(100% + 10px);
-    left: 0;
-    width: 100%;
-    white-space: nowrap;
-    color: #000000;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    text-align: left;
-    opacity: 0;
-    transform: translateY(4px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    pointer-events: none;
+    right: 10px;
+    bottom: 20px;
+    transform: rotate(-90deg);
+    transform-origin: right bottom;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.7);
 }
 
-.carousel-item:hover::after {
+/* Columna 3: Fotos derechas + Texto de la revista */
+.journal-col-right {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 25px;
+}
+
+.right-images-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.img-top-tall { height: 380px; }
+.img-bottom-square { height: 260px; }
+
+/* Tipografía de la maqueta */
+.journal-editorial-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 10px;
+}
+
+.editorial-header {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.script-subtitle {
+    font-family: "Slabo 13px", serif;
+    font-weight: 50;
+    font-style: normal;
+    font-size: 0.8rem;
+    color: #0c0905;
+    display: block;
+    margin-bottom: -15px;
+    
+}
+
+.serif-title {
+    font-family: "Pinyon Script", cursive;
+  font-weight: 200;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #190e01;
+    margin: 0;
+}
+
+.lead-p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #4a463d;
+    margin-bottom: 20px;
+}
+
+.editorial-entries .entry {
+    margin-bottom: 12px;
+}
+
+.editorial-entries h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 3px;
+    color: #222;
+}
+
+.editorial-entries p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    line-height: 1.4;
+    color: #555248;
+}
+
+.journal-footer-tag {
+    display: flex;
+    gap: 15px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    color: #888273;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+/* Animaciones de brote al abrir */
+.journal-spread > * {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scrapbook-modal.active .journal-spread > * {
     opacity: 1;
     transform: translateY(0);
+}
+
+.scrapbook-modal.active .journal-col-left { transition-delay: 0.15s; }
+.scrapbook-modal.active .journal-col-center { transition-delay: 0.25s; }
+.scrapbook-modal.active .journal-col-right { transition-delay: 0.35s; }
+
+@media (max-width: 1024px) {
+    .journal-spread {
+        grid-template-columns: 1fr;
+    }
+    .journal-col-right {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ==========================================
