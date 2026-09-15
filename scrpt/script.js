@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
     if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
 
+
+
+    
     // ==========================================
     // 2. CONTROL DE OCULTAR NAVBAR EN SCROLL (FOOTER SIEMPRE VISIBLE)
     // ==========================================
@@ -348,4 +351,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicializar el primer proyecto
     updateCarousel(0);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. Transición por Scroll
+    const heroSection = document.getElementById("heroSection");
+    const gallerySection = document.getElementById("gallerySection");
+
+    if (heroSection && gallerySection) {
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                    heroSection.classList.add("is-scrolled-out");
+                    gallerySection.classList.add("is-visible");
+                } else {
+                    heroSection.classList.remove("is-scrolled-out");
+                    gallerySection.classList.remove("is-visible");
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+
+        scrollObserver.observe(heroSection);
+    }
+
+    // 2. Anotación Rosa Crayon
+    const highlightTarget = document.getElementById("highlightCrayon");
+    const quoteWrapper = document.getElementById("quoteWrapper");
+
+    if (highlightTarget && quoteWrapper && window.RoughNotation) {
+        const annotation = RoughNotation.annotate(highlightTarget, {
+            type: 'circle',
+            color: '#ff69b4',
+            strokeWidth: 2.3,
+            padding: 32,
+            iterations: 2.5,
+            animationDuration: 600
+        });
+
+        quoteWrapper.addEventListener("mouseenter", () => {
+            annotation.show();
+        });
+    }
 });

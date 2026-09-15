@@ -7,60 +7,74 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
+    <!-- Librería para el marcado crayón rosa -->
+    <script src="https://unpkg.com/rough-notation/lib/rough-notation.iife.js"></script>
+
     <link rel="stylesheet" href="style/style.css">
     <script src="scrpt/script.js" defer></script>
-
 </head>
 <body>
 
     <div class="menu-overlay" id="menuOverlay"></div>
 
-<aside class="side-menu" id="sideMenu">
-    <div class="side-menu-header">
-        <span class="side-menu-title">LIBRARY</span>
-        <button class="close-btn" id="closeMenuBtn" aria-label="Cerrar Menú">(Close)</button>
-    </div>
+    <aside class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <span class="side-menu-title">LIBRARY</span>
+            <button class="close-btn" id="closeMenuBtn" aria-label="Cerrar Menú">(Close)</button>
+        </div>
 
-    <ul class="side-menu-list">
-        <li><a href="index.html" class="menu-item">Index <span>&gt;</span></a></li>
-        <li><a href="proyectos.html" class="menu-item">Selected Works <span>&gt;</span></a></li>
-        <li><a href="3d.html" class="menu-item">3D Work <span>&gt;</span></a></li>
-        <li><a href="editorial.html" class="menu-item">Editorial Design <span>&gt;</span></a></li>
-        <li><a href="graphics.html" class="menu-item">Graphics <span>&gt;</span></a></li>
-        <li><a href="photography.html" class="menu-item">Photography <span>&gt;</span></a></li>
-        <li><a href="cv.html" class="menu-item">Curriculum / About <span>&gt;</span></a></li>
-        <li><a href="contacto.html" class="menu-item">Contacto <span>&gt;</span></a></li>
-    </ul>
-</aside>
+        <ul class="side-menu-list">
+            <li><a href="index.html" class="menu-item">Index <span>&gt;</span></a></li>
+            <li><a href="proyectos.html" class="menu-item">Selected Works <span>&gt;</span></a></li>
+            <li><a href="3d.html" class="menu-item">3D Work <span>&gt;</span></a></li>
+            <li><a href="editorial.html" class="menu-item">Editorial Design <span>&gt;</span></a></li>
+            <li><a href="graphics.html" class="menu-item">Graphics <span>&gt;</span></a></li>
+            <li><a href="photography.html" class="menu-item">Photography <span>&gt;</span></a></li>
+            <li><a href="cv.html" class="menu-item">Curriculum / About <span>&gt;</span></a></li>
+            <li><a href="contacto.html" class="menu-item">Contacto <span>&gt;</span></a></li>
+        </ul>
+    </aside>
 
-<nav class="navbar">
-    <button class="nav-link menu-trigger" id="openMenuBtn">Menu</button>
-    <a href="proyectos.html" class="nav-link active">Proyectos</a>
-    <a href="cv.html" class="nav-link">CV</a>
-    <a href="contacto.html" class="nav-link">Contacto</a>
-</nav>
+    <nav class="navbar">
+        <button class="nav-link menu-trigger" id="openMenuBtn">Menu</button>
+        <a href="proyectos.html" class="nav-link active">Proyectos</a>
+        <a href="cv.html" class="nav-link">CV</a>
+        <a href="contacto.html" class="nav-link">Contacto</a>
+    </nav>
 
-    <section class="hero-section">
-        <div class="quote-wrapper">
-            <p class="quote-text">
-                “I will never be the woman with the perfect hair, <br>who can wear white and not spill on it.”
-            </p>
+    <!-- SECCIÓN 1: HERO / FRASE CENTRADA -->
+    <section class="hero-section" id="heroSection">
+        <div class="quote-wrapper" id="quoteWrapper">
             
-            <a href="cv.html" class="hover-card">
-                <img src="https://i.pinimg.com/736x/7a/1c/cf/7a1ccfecde1bb434838b97508cc50228.jpg" alt="CV Preview">
+            <p class="quote-text">
+                <span id="highlightCrayon">“I will never be the woman with the perfect hair,</span><br>who can wear white and not spill on it.”
+            </p>
+
+            <!-- Card de CV flotante en el centro -->
+            <a href="cv.html" class="cv-hover-card">
+                <div class="img-wrapper">
+                    <img src="https://i.pinimg.com/736x/7a/1c/cf/7a1ccfecde1bb434838b97508cc50228.jpg" alt="CV Preview">
+                </div>
                 <span class="card-label">CV</span>
             </a>
+
+            <!-- Mancha de Café -->
+            <!-- <div class="coffee-splash-wrapper">
+                <div class="coffee-stain-img"></div>
+            </div> -->
+
         </div>
     </section>
 
-    <section class="gallery-section">
+    <!-- SECCIÓN 2: GALERÍA -->
+    <section class="gallery-section" id="gallerySection">
         <div class="gallery-grid">
             
             <a href="3d.html" class="grid-card">
                 <div class="img-wrapper">
-                    <img src="https://i.pinimg.com/1200x/12/30/1c/12301caca75844f3e53bc6631e6e23f1.jpg" alt="3D">
+                    <img src="https://i.pinimg.com/736x/53/86/0d/53860d9fc21a4792b5716eaf3636d543.jpg" alt="3D">
                 </div>
                 <span class="card-label">3D</span>
             </a>
@@ -74,21 +88,21 @@
 
             <a href="graphics.html" class="grid-card">
                 <div class="img-wrapper">
-                    <img src="https://i.pinimg.com/1200x/34/8a/7b/348a7be8d80b90e5c4e98744a35e5d42.jpg" alt="Graphics">
+                    <img src="https://i.pinimg.com/1200x/34/50/2f/34502f5fee71eb94bb030b04f56c31e1.jpg" alt="Graphics">
                 </div>
                 <span class="card-label">Graphics</span>
             </a>
 
-            <a href="photography.html" class="grid-card">
+            <a href="web.html" class="grid-card">
                 <div class="img-wrapper">
-                    <img src="https://i.pinimg.com/1200x/ff/79/56/ff795650d2c2e9dba9d639d0612eb222.jpg" alt="Photography">
+                    <img src="https://i.pinimg.com/1200x/7f/2d/40/7f2d4067f790949bf04144408beb55e9.jpg" alt="Web">
                 </div>
-                <span class="card-label">Photography</span>
+                <span class="card-label">Web</span>
             </a>
 
             <a href="video.html" class="grid-card">
                 <div class="img-wrapper">
-                    <img src="https://i.pinimg.com/1200x/f1/2b/13/f12b138e47975c2cf293a9381652df1e.jpg" alt="Video">
+                    <img src="https://i.pinimg.com/1200x/df/f7/ec/dff7ec060e5c59ac579b5b0434624d35.jpg" alt="Video">
                 </div>
                 <span class="card-label">Video</span>
             </a>
@@ -102,7 +116,7 @@
 
             <a href="TFG.html" class="grid-card">
                 <div class="img-wrapper">
-                    <img src="https://i.pinimg.com/736x/e3/30/2e/e3302e28a1f290d7640d3d04328b29f4.jpg" alt="TFG">
+                    <img src="https://i.pinimg.com/736x/59/d4/b5/59d4b51add5338cb978218da4f8c4d25.jpg" alt="TFG">
                 </div>
                 <span class="card-label">TFG</span>
             </a>
@@ -117,7 +131,6 @@
         </div>
 
         <div class="footer-canvas">
-            
             <div class="text-node main-collab-text">
                 LET'S WORK<br>TOGETHER.
             </div>

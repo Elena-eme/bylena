@@ -30,6 +30,11 @@ body {
     z-index: 1000 !important; /* Elevado para asegurar interacción */
 }
 
+    
+
+
+
+
 .nav-link {
     text-decoration: none;
     color: #111111;
@@ -195,29 +200,183 @@ body {
 
 
 /* --- Sección 1: Frase --- */
+/* ==========================================================================
+   HERO CENTRADO Y ELEMENTOS HOVER
+   ========================================================================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
 .hero-section {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 2rem;
+    padding-top: 60px;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+    will-change: transform, opacity;
+}
+
+.hero-section.is-scrolled-out {
+    opacity: 0;
+    transform: translateY(-80px) scale(0.96);
+    pointer-events: none;
 }
 
 .quote-wrapper {
     position: relative;
-    text-align: center;
-    cursor: pointer;
     max-width: 850px;
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 40px 20px;
 }
 
 .quote-text {
-    font-size: 1.35rem;
+    font-size: 1.4rem;
+    line-height: 1.2;
     font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: -0.01em;
-    color: #111111;
+    color: #111;
+    text-align: center;
+    margin: 0 auto;
 }
+
+#highlightCrayon {
+    position: relative;
+    display: inline-block;
+    padding: 8px 20px;
+}
+
+/* --- Card de CV Flotante en el Centro --- */
+.cv-hover-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 140px;
+    text-decoration: none;
+    color: inherit;
+    text-align: left;
+    opacity: 0;
+    /* Ubicación exacta al centro con escala inicial ligera sin rotaciones */
+    transform: translate(-50%, -50%) scale(0.95);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.cv-hover-card .img-wrapper {
+    width: 100%;
+    height: 140px;
+    border-radius: 0; /* Bordes totalmente rectos */
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    margin-bottom: 4px;
+}
+
+.cv-hover-card .img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0; /* Bordes rectos */
+    text-align: ;
+}
+
+/* Texto de la etiqueta más pequeño */
+.cv-hover-card .card-label {
+    display: block;
+    font-size: 11px; /* Texto más pequeño */
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #111;
+    text-align: center;
+}
+
+/* Animación Hover suave: crece un poco sin rotar */
+.quote-wrapper:hover .cv-hover-card {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05);
+    pointer-events: auto;
+}
+
+/* Contenedor de la mancha */
+.coffee-splash-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 280px;
+    height: 280px;
+    transform: translate(-50%, -50%) scale(0.8);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 2;
+    /* Permite que la mancha interactúe con la textura del papel/fondo */
+    mix-blend-mode: multiply; 
+    transition: opacity 0.4s ease-out, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Capa de la imagen de la mancha */
+.coffee-stain-img {
+    width: 100%;
+    height: 100%;
+    background-image: url('https://i.pinimg.com/1200x/ca/98/23/ca98237b43429790256dea05a604e7ca.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+
+/* Transición suave al pasar el ratón (efecto secado/expansión) */
+.quote-wrapper:hover .coffee-splash-wrapper {
+    opacity: 0.85; /* El café real no es 100% opaco */
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- Transición Galería --- */
+.gallery-section {
+    min-height: 100vh;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease;
+    will-change: transform, opacity;
+    padding: 6rem 2rem 4rem 2rem;
+    box-sizing: border-box;
+}
+
+.gallery-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.grid-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-section.is-visible .grid-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gallery-section.is-visible .grid-card:nth-child(1) { transition-delay: 0.10s; }
+.gallery-section.is-visible .grid-card:nth-child(2) { transition-delay: 0.18s; }
+.gallery-section.is-visible .grid-card:nth-child(3) { transition-delay: 0.26s; }
+.gallery-section.is-visible .grid-card:nth-child(4) { transition-delay: 0.34s; }
+.gallery-section.is-visible .grid-card:nth-child(5) { transition-delay: 0.42s; }
+.gallery-section.is-visible .grid-card:nth-child(6) { transition-delay: 0.50s; }
+.gallery-section.is-visible .grid-card:nth-child(7) { transition-delay: 0.58s; }
+
 
 /* Hover emergente sobre la frase */
 .hover-card {
@@ -688,184 +847,391 @@ body {
     max-width: 750px;
 }
 
-/* ==========================================
-   GALERÍA GRID (PROYECTOS / CHECKERBOARD)
-   ========================================== */
+/* ==========================================================================
+   SECCIÓN SOBRE MÍ (OCUPA EXACTAMENTE EL 100% DE LA PANTALLA)
+   ========================================================================== */
 
-/* --- ANIMACIÓN INTRO TÍTULO --- */
-
-/* Pantalla superpuesta que ocupa toda la vista */
-.intro-title-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
+.about-section {
+    display: flex;
+    width: 100%; /* Cambiado de 100vw a 100% */
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff; /* Ajusta al fondo de tu web si es oscuro (#000) */
-    z-index: 9999;
-    pointer-events: none; /* Permite interactuar con la web tras desaparecer */
-    animation: slideUpIntro 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-    animation-delay: 1s; /* Tiempo que permanece centrado en pantalla antes de subir */
-}
-
-/* Estilo del título centrado */
-.intro-title {
-    font-size: 8rem; /* Tamaño grande ajustado */
-    font-weight: 600;
-    letter-spacing: -2px;
-    text-transform: uppercase;
-    color: #000000;
+    max-height: 100vh;
     margin: 0;
-}
-
-/* Animación de desplazamiento hacia arriba */
-@keyframes slideUpIntro {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-100vh);
-    }
-}
-
-/* Responsivo para móviles */
-@media (max-width: 768px) {
-    .intro-title {
-        font-size: 3.5rem;
-    }
-}
-
-.projects-page {
-    background-color: #ffffff;
-    color: #111111;
-    min-height: 100vh;
-}
-
-.subtitle-proyects {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 4rem;
-    text-align: right;    
-    font-size: 0.7rem;
-    font-weight: 300;
-    z-index: 100;
-    padding-top: 15rem;
-}
-
-.projects-checkerboard {
-    width: 100vw;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    padding-top: 5rem;
-    box-sizing: border-box;
-}
-
-.board-card {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    box-sizing: border-box;
-}
-
-/* Tarjetas de Texto */
-.text-card {
-    background-color: #ffffff;
-    padding: 2rem;
-    text-align: center;
-}
-
-.card-text {
-    font-size: 1.8rem;
-    font-weight: 300;
-    letter-spacing: -0.01em;
-    color: #111111;
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-}
-
-/* Tarjetas de Imagen (Efecto Tecla 3D) */
-.image-card {
     padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-.key-card {
-    position: relative;
+/* --- Columna Izquierda (50% Ancho / 100% Alto) --- */
+.col-left {
+    width: 50%;
+    height: 100%;
+    background-color: #828358;
+    padding: 3vh 4vw; /* Unidades relativas para adaptarse al alto/ancho de pantalla */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.title-container {
+    width: 100%;
+    color: #111;
+}
+
+.main-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem); /* Tamaño adaptativo para que nunca se rompa */
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin: 0;
+    line-height: 0.9;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    display: block;
+    margin-top: 5px;
+    color: #111;
+}
+
+.main-img-container {
+    width: 75%;
+    max-height: 55vh; /* Ajusta la imagen para que no desborde hacia abajo */
+    margin: 0 auto;
+    text-align: left;
+}
+
+.workspace-img {
     width: 100%;
     height: 100%;
+    max-height: 48vh;
+    object-fit: cover;
     display: block;
-    text-decoration: none;
-    overflow: hidden;
-    background-color: #f2f1ed;
-    box-shadow: 
-        0px 6px 15px rgba(0, 0, 0, 0.08),
-        inset 0px 1px 1px rgba(255, 255, 255, 0.6);
-        
-    transform: translateY(0);
-    transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1), 
-                box-shadow 0.2s cubic-bezier(0.2, 0, 0.2, 1);
 }
 
-.key-card img {
+.main-img-container .caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    color: #111;
+    display: block;
+    margin-top: 8px;
+}
+
+/* --- Columna Derecha (50% Ancho / 100% Alto) --- */
+.col-right {
+    width: 50%;
+    height: 100%;
+    background-color: #f3f0e8;
+    padding: 3vh 3vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.top-tag, .bottom-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: #111;
+}
+
+.portraits-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.portrait-item {
+    width: 75px;
+    height: 100px;
+}
+
+.portrait-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-.card-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-    padding: 1rem;
+.who-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: 8px;
+    color: #3d2314;
+    margin: 5px 0;
 }
 
-.overlay-text {
-    color: #ffffff;
-    font-size: 1.4rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
+.bio-text {
+    max-width: 360px;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(10px, 1vw, 11px);
+    line-height: 1.4;
+    color: #222;
+}
+
+.bio-text .greeting {
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.bio-text p {
+    margin-bottom: 6px;
+}
+
+/* Forma irregular */
+.quote-shape {
+    background-color: #828358;
+    color: #3d2314;
+    padding: 15px 25px;
+    width: 80%;
+    max-width: 340px;
+    clip-path: polygon(8% 15%, 92% 5%, 100% 80%, 85% 95%, 15% 90%, 0% 70%);
+    box-sizing: border-box;
+}
+
+.shape-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    margin: 0;
+}
+
+.shape-highlight {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    margin: 3px 0;
+}
+
+.shape-footer {
+    font-family: 'Inter', sans-serif;
+    font-size: 8px;
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* ==========================================
+   NUEVO CATÁLOGO DE PROYECTOS (ISOLATED)
+   ========================================== */
+
+.cat-page-body {
+    background-color: #e6e4dd !important;
+    color: #111111 !important;
+    font-family: 'Inter', sans-serif !important;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.cat-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 8rem 4rem 6rem 4rem;
+    box-sizing: border-box;
+}
+
+.cat-header-title {
+    font-size: 4rem;
+    font-weight: 500;
+    letter-spacing: -1.5px;
     text-transform: uppercase;
+    margin: 0 0 2rem 0;
+    color: #000000;
 }
 
-.key-card:hover {
-    transform: translateY(5px);
-    box-shadow: 
-        0px 1px 3px rgba(0, 0, 0, 0.1),
-        inset 0px 4px 10px rgba(0, 0, 0, 0.35);
+/* Barra de Filtros */
+.cat-filter-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
 }
 
-.key-card:hover .card-overlay {
-    opacity: 1;
+.cat-filter-btn {
+    background: transparent;
+    border: none;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: #666666;
+    cursor: pointer;
+    padding: 0;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s ease;
 }
 
-/* Adaptación Responsiva Grid */
-@media (max-width: 900px) {
-    .projects-checkerboard {
-        grid-template-columns: repeat(2, 1fr);
+.cat-filter-btn:hover {
+    color: #000000;
+}
+
+.cat-filter-btn.active {
+    color: #000000;
+    font-weight: 500;
+}
+
+.cat-filter-btn.active::before {
+    content: "•";
+    color: #d03025;
+    font-size: 1.2rem;
+    line-height: 0;
+}
+
+/* Grilla de 4 Columnas */
+.cat-main-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    column-gap: 2.5rem !important;
+    row-gap: 3.5rem !important;
+    width: 100% !important;
+}
+
+.cat-project-item {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+}
+
+/* Cajas contenedoras cuadradas estables */
+.cat-image-box {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    background-color: #d2cfc4 !important; /* Si la imagen falla, muestra este tono gris/crema */
+}
+
+.cat-image-box img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    transition: opacity 0.3s ease;
+}
+
+.cat-image-box:hover img {
+    opacity: 0.85;
+}
+
+/* Pie de foto */
+.cat-item-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 0.6rem;
+    font-size: 0.7rem;
+    line-height: 1.3;
+}
+
+.cat-item-title {
+    color: #111111;
+    font-weight: 400;
+    max-width: 75%;
+}
+
+.cat-item-tag {
+    color: #555555;
+    font-weight: 300;
+}
+
+.cat-blank-space {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+    .cat-main-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        column-gap: 1.5rem !important;
+        row-gap: 2.5rem !important;
     }
-    .card-text {
-        font-size: 1.4rem;
+
+    .cat-blank-space {
+        display: none !important;
     }
 }
 
-@media (max-width: 500px) {
-    .projects-checkerboard {
-        grid-template-columns: 1fr;
+@media (max-width: 600px) {
+    .cat-wrapper {
+        padding: 6rem 1.5rem 4rem 1.5rem;
+    }
+
+    .cat-header-title {
+        font-size: 2.5rem;
+    }
+
+    .cat-main-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .cat-filter-menu {
+        gap: 1rem;
     }
 }
 
+
+/* ==========================================
+   ESTILOS EXCLUSIVOS PARA PÁGINA 3D
+   ========================================== */
+
+.horizontal-strip {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.horizontal-media {
+    width: 100%;
+    max-height: 500px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+}
+
+/* Reglas aisladas con .3d-page para no romper otras secciones */
+.3d-page .editorial-container {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.3d-page .editorial-project {
+    margin: 0 !important;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}
+
+.video-link-tag {
+    text-decoration: none;
+    background-color: #3d2314;
+    color: #f3f0e8;
+    transition: background-color 0.3s ease;
+}
+
+.video-link-tag:hover {
+    background-color: #828358;
+    color: #111;
+}
 /* ==========================================
    Transiciones de Nav y Footer
    ========================================== */
@@ -2277,3 +2643,6 @@ body.index-page {
         font-size: 2rem;
     }
 }
+
+/* WEB */
+
