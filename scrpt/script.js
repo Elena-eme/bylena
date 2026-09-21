@@ -28,16 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
     if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
 
-
-
-    
     // ==========================================
     // 2. CONTROL DE OCULTAR NAVBAR EN SCROLL (FOOTER SIEMPRE VISIBLE)
     // ==========================================
     const navbar = document.querySelector('.navbar');
     const footer = document.querySelector('.site-footer');
 
-    // Aseguramos que el footer SIEMPRE esté visible por defecto
     if (footer) {
         footer.classList.add('footer-visible');
     }
@@ -48,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const scrollY = window.scrollY || window.pageYOffset;
             const documentHeight = document.documentElement.scrollHeight;
 
-            // Oculta la barra de navegación superior únicamente si llegamos al final de la página
             if (windowHeight + scrollY >= documentHeight - 80) {
                 navbar.classList.add('nav-hidden');
             } else {
@@ -161,17 +156,124 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. BOTONES DE NAVEGACIÓN SECUNDARIOS
     // ==========================================
     const carouselBtnTarget = document.getElementById('tasteCarousel');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
+    const prevBtnSecondary = document.getElementById('prevBtn');
+    const nextBtnSecondary = document.getElementById('nextBtn');
 
-    if (carouselBtnTarget && prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', () => carouselBtnTarget.scrollBy({ left: -300, behavior: 'smooth' }));
-        nextBtn.addEventListener('click', () => carouselBtnTarget.scrollBy({ left: 300, behavior: 'smooth' }));
+    if (carouselBtnTarget && prevBtnSecondary && nextBtnSecondary) {
+        prevBtnSecondary.addEventListener('click', () => carouselBtnTarget.scrollBy({ left: -300, behavior: 'smooth' }));
+        nextBtnSecondary.addEventListener('click', () => carouselBtnTarget.scrollBy({ left: 300, behavior: 'smooth' }));
+    }
+
+    // ==========================================
+    // 6. CARRUSEL DE PROYECTOS / TARJETAS
+    // ==========================================
+    const projectCards = document.querySelectorAll('.project-card');
+    const infoTitle = document.getElementById('infoTitle');
+    const infoDesc = document.getElementById('infoDesc');
+    const carouselTrackProj = document.getElementById('carouselTrack');
+    const viewMoreBtn = document.getElementById('viewMoreBtn');
+    const scrapbookModal = document.getElementById('scrapbookModal');
+
+    if (projectCards.length > 0 && carouselTrackProj) {
+        let currentIndex = 0;
+        const cardWidth = 390;
+
+        function updateCarousel(index) {
+            if (index < 0) index = 0;
+            if (index >= projectCards.length) index = projectCards.length - 1;
+
+            currentIndex = index;
+
+            carouselTrackProj.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
+            if (infoTitle && infoDesc) {
+                infoTitle.style.opacity = '0';
+                infoTitle.style.transform = 'translateY(8px)';
+                infoDesc.style.opacity = '0';
+                infoDesc.style.transform = 'translateY(8px)';
+
+                setTimeout(() => {
+                    const activeCard = projectCards[currentIndex];
+                    infoTitle.textContent = activeCard.dataset.title || '';
+                    infoDesc.textContent = activeCard.dataset.desc || '';
+
+                    infoTitle.style.opacity = '1';
+                    infoTitle.style.transform = 'translateY(0)';
+                    infoDesc.style.opacity = '1';
+                    infoDesc.style.transform = 'translateY(0)';
+                }, 200);
+            }
+        }
+
+        if (nextBtnSecondary) {
+            nextBtnSecondary.addEventListener('click', () => {
+                if (currentIndex < projectCards.length - 1) {
+                    updateCarousel(currentIndex + 1);
+                }
+            });
+        }
+
+        if (prevBtnSecondary) {
+            prevBtnSecondary.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    updateCarousel(currentIndex - 1);
+                }
+            });
+        }
+
+        updateCarousel(0);
+    }
+
+    if (viewMoreBtn && scrapbookModal) {
+        viewMoreBtn.addEventListener('click', () => {
+            scrapbookModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    // ==========================================
+    // 7. HERO & ANOTACIÓN ROSA CRAYON (ROUGHNOTATION)
+    // ==========================================
+    const heroSection = document.getElementById("heroSection");
+    const gallerySection = document.getElementById("gallerySection");
+
+    if (heroSection && gallerySection) {
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                    heroSection.classList.add("is-scrolled-out");
+                    gallerySection.classList.add("is-visible");
+                } else {
+                    heroSection.classList.remove("is-scrolled-out");
+                    gallerySection.classList.remove("is-visible");
+                }
+            });
+        }, { threshold: 0.3 });
+
+        scrollObserver.observe(heroSection);
+    }
+
+    const highlightTarget = document.getElementById("highlightCrayon");
+    const quoteWrapper = document.getElementById("quoteWrapper");
+
+    if (highlightTarget && quoteWrapper && window.RoughNotation) {
+        const annotation = RoughNotation.annotate(highlightTarget, {
+            type: 'circle',
+            color: '#ff69b4',
+            strokeWidth: 2.3,
+            padding: 32,
+            iterations: 2.5,
+            animationDuration: 600
+        });
+
+        quoteWrapper.addEventListener("mouseenter", () => {
+            annotation.show();
+        });
     }
 });
 
 // ==========================================
-// 6. FUNCIÓN DE VOLUMEN DE VÍDEO (TFG)
+// 8. FUNCIÓN DE VOLUMEN DE VÍDEO (TFG)
 // ==========================================
 function toggleVolume() {
     const video = document.getElementById('tfgVideo');
@@ -191,20 +293,18 @@ function toggleVolume() {
     }
 }
 
-// VIDEO
-
 // ==========================================
-// PÁGINA DE VÍDEO: EXPANSIÓN DE TARJETAS PANTONE Y REPRODUCTOR MODAL
+// 9. PÁGINA DE VÍDEO: PANTONE Y MODAL REPRODUCTOR
 // ==========================================
 const folderCards = document.querySelectorAll('.folder-card');
-const videoModal = document.getElementById('videoModal');
+const pantoModal = document.getElementById('videoModal');
 const closeVideoModal = document.getElementById('closeVideoModal');
 const modalTitle = document.getElementById('modalTitle');
 const modalSubtitle = document.getElementById('modalSubtitle');
 const modalDesc = document.getElementById('modalDesc');
 const modalIframe = document.getElementById('modalIframe');
 
-if (folderCards.length > 0 && videoModal) {
+if (folderCards.length > 0 && pantoModal) {
     folderCards.forEach(card => {
         card.addEventListener('click', () => {
             const title = card.getAttribute('data-title');
@@ -212,34 +312,26 @@ if (folderCards.length > 0 && videoModal) {
             const desc = card.getAttribute('data-desc');
             const ytUrl = card.getAttribute('data-yt');
 
-            // 1. Obtener coordenadas y posición central exacta de la tarjeta pulsada
             const rect = card.getBoundingClientRect();
             const cardCenterX = rect.left + rect.width / 2;
             const cardCenterY = rect.top + rect.height / 2;
 
-            // 2. Extraer el color de fondo y de texto exactos asignados a la tarjeta
             const cardBg = window.getComputedStyle(card).backgroundColor;
             const cardColor = window.getComputedStyle(card).color;
 
-            // 3. Aplicar colores al modal expandido
-            videoModal.style.backgroundColor = cardBg;
-            videoModal.style.color = cardColor;
+            pantoModal.style.backgroundColor = cardBg;
+            pantoModal.style.color = cardColor;
+            pantoModal.style.transformOrigin = `${cardCenterX}px ${cardCenterY}px`;
 
-            // 4. Fijar el origen de la animación en el punto donde está la tarjeta en pantalla
-            videoModal.style.transformOrigin = `${cardCenterX}px ${cardCenterY}px`;
+            if (modalTitle) modalTitle.textContent = title;
+            if (modalSubtitle) modalSubtitle.textContent = subtitle;
+            if (modalDesc) modalDesc.textContent = desc;
+            if (modalIframe) modalIframe.src = ytUrl + "?autoplay=1";
 
-            // 5. Cargar contenidos y URL del vídeo
-            modalTitle.textContent = title;
-            modalSubtitle.textContent = subtitle;
-            modalDesc.textContent = desc;
-            modalIframe.src = ytUrl + "?autoplay=1";
-
-            // 6. Activar visibilidad y bloquear el scroll de fondo
-            videoModal.classList.add('active');
+            pantoModal.classList.add('active');
             document.body.style.overflow = 'hidden';
 
-            // 7. Animación de expansión fluida usando Web Animations API
-            videoModal.animate([
+            pantoModal.animate([
                 { transform: 'scale(0)', opacity: 0, borderRadius: '20px' },
                 { transform: 'scale(1)', opacity: 1, borderRadius: '0px' }
             ], {
@@ -250,11 +342,10 @@ if (folderCards.length > 0 && videoModal) {
         });
     });
 
-    // Función para cerrar la tarjeta expandida encogiéndose a su posición de origen
     function hideVideoModal() {
-        if (!videoModal.classList.contains('active')) return;
+        if (!pantoModal.classList.contains('active')) return;
 
-        const animation = videoModal.animate([
+        const animation = pantoModal.animate([
             { transform: 'scale(1)', opacity: 1, borderRadius: '0px' },
             { transform: 'scale(0)', opacity: 0, borderRadius: '20px' }
         ], {
@@ -264,135 +355,122 @@ if (folderCards.length > 0 && videoModal) {
         });
 
         animation.onfinish = () => {
-            videoModal.classList.remove('active');
-            modalIframe.src = ""; // Detener la reproducción del vídeo al cerrar
+            pantoModal.classList.remove('active');
+            if (modalIframe) modalIframe.src = "";
             document.body.style.overflow = '';
         };
     }
 
-    // Escuchadores de eventos para cerrar (Botón de cierre, fondo y tecla ESC)
     if (closeVideoModal) {
         closeVideoModal.addEventListener('click', hideVideoModal);
     }
 
-    videoModal.addEventListener('click', (e) => {
-        if (e.target === videoModal) hideVideoModal();
+    pantoModal.addEventListener('click', (e) => {
+        if (e.target === pantoModal) hideVideoModal();
     });
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+        if (e.key === 'Escape' && pantoModal.classList.contains('active')) {
             hideVideoModal();
         }
     });
 }
-document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.project-card');
-    const infoTitle = document.getElementById('infoTitle');
-    const infoDesc = document.getElementById('infoDesc');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const carouselTrack = document.getElementById('carouselTrack');
-    const viewMoreBtn = document.getElementById('viewMoreBtn');
-    const scrapbookModal = document.getElementById('scrapbookModal');
 
-    let currentIndex = 0;
-    const cardWidth = 390; // Ancho tarjeta (360px) + Gap (30px)
+// ==========================================
+// 10. EFECTO FROST INTERACTIVO
+// ==========================================
+const container = document.getElementById('frostContainer');
+const canvas = document.getElementById('frostCanvas');
 
-    function updateCarousel(index) {
-        if (index < 0) index = 0;
-        if (index >= cards.length) index = cards.length - 1;
+if (canvas && container) {
+    const ctx = canvas.getContext('2d');
 
-        currentIndex = index;
+    function initFrost() {
+        const dpr = window.devicePixelRatio || 1;
+        const w = container.clientWidth || container.offsetWidth;
+        const h = container.clientHeight || container.offsetHeight;
 
-        // Desplazamiento del carrusel
-        carouselTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        if (w === 0 || h === 0) return;
 
-        // Transición suave del texto del panel izquierdo
-        infoTitle.style.opacity = '0';
-        infoTitle.style.transform = 'translateY(8px)';
-        infoDesc.style.opacity = '0';
-        infoDesc.style.transform = 'translateY(8px)';
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        
+        ctx.scale(dpr, dpr);
 
-        setTimeout(() => {
-            const activeCard = cards[currentIndex];
-            infoTitle.textContent = activeCard.dataset.title;
-            infoDesc.textContent = activeCard.dataset.desc;
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.fillStyle = 'rgba(221, 235, 247, 0.92)';
+        ctx.fillRect(0, 0, w, h);
 
-            infoTitle.style.opacity = '1';
-            infoTitle.style.transform = 'translateY(0)';
-            infoDesc.style.opacity = '1';
-            infoDesc.style.transform = 'translateY(0)';
-        }, 200);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+        for (let i = 0; i < 2000; i++) {
+            const rx = Math.random() * w;
+            const ry = Math.random() * h;
+            ctx.fillRect(rx, ry, 2, 2);
+        }
+
+        ctx.globalCompositeOperation = 'destination-out';
+        const fontSize = 18;
+        ctx.font = `600 ${fontSize}px 'Helvetica Neue', Arial, sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        ctx.fillText('DESCONGELA', w / 2, h / 2);
     }
 
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            if (currentIndex < cards.length - 1) {
-                updateCarousel(currentIndex + 1);
-            }
-        });
+    function reveal(e) {
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        ctx.globalCompositeOperation = 'destination-out';
+
+        const brushRadius = 50;
+        const gradient = ctx.createRadialGradient(x, y, 0, x, y, brushRadius);
+        gradient.addColorStop(0, 'rgba(0, 0, 0, 1)');
+        gradient.addColorStop(0.5, 'rgba(0, 0, 0, 0.5)');
+        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(x, y, brushRadius, 0, Math.PI * 2);
+        ctx.fill();
     }
 
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                updateCarousel(currentIndex - 1);
-            }
-        });
-    }
+    canvas.addEventListener('mousemove', reveal);
+    window.addEventListener('resize', initFrost);
+    window.addEventListener('load', initFrost);
+    initFrost();
+}
 
-    // Al hacer clic en "Ver más", abre la revista/scrapbook
-    if (viewMoreBtn && scrapbookModal) {
-        viewMoreBtn.addEventListener('click', () => {
-            scrapbookModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-    }
+// ==========================================
+// 11. MODAL VÍDEO YOUTUBE (SECCIONES 06 Y 08)
+// ==========================================
+const ytVideoModal = document.getElementById('videoModal');
+const ytModalOverlay = document.getElementById('modalOverlay');
+const closeModalBtn = document.getElementById('closeModalBtn');
+const videoIframe = document.getElementById('videoIframe');
+const videoTriggers = document.querySelectorAll('[data-video-id]');
 
-    // Inicializar el primer proyecto
-    updateCarousel(0);
+function openVideoModal(videoId) {
+    if (videoIframe && ytVideoModal) {
+        videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        ytVideoModal.classList.add('active');
+    }
+}
+
+function closeYtVideoModal() {
+    if (videoIframe && ytVideoModal) {
+        videoIframe.src = '';
+        ytVideoModal.classList.remove('active');
+    }
+}
+
+videoTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+        const videoId = trigger.getAttribute('data-video-id');
+        openVideoModal(videoId);
+    });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // 1. Transición por Scroll
-    const heroSection = document.getElementById("heroSection");
-    const gallerySection = document.getElementById("gallerySection");
-
-    if (heroSection && gallerySection) {
-        const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) {
-                    heroSection.classList.add("is-scrolled-out");
-                    gallerySection.classList.add("is-visible");
-                } else {
-                    heroSection.classList.remove("is-scrolled-out");
-                    gallerySection.classList.remove("is-visible");
-                }
-            });
-        }, {
-            threshold: 0.3
-        });
-
-        scrollObserver.observe(heroSection);
-    }
-
-    // 2. Anotación Rosa Crayon
-    const highlightTarget = document.getElementById("highlightCrayon");
-    const quoteWrapper = document.getElementById("quoteWrapper");
-
-    if (highlightTarget && quoteWrapper && window.RoughNotation) {
-        const annotation = RoughNotation.annotate(highlightTarget, {
-            type: 'circle',
-            color: '#ff69b4',
-            strokeWidth: 2.3,
-            padding: 32,
-            iterations: 2.5,
-            animationDuration: 600
-        });
-
-        quoteWrapper.addEventListener("mouseenter", () => {
-            annotation.show();
-        });
-    }
-});
+if (closeModalBtn) closeModalBtn.addEventListener('click', closeYtVideoModal);
+if (ytModalOverlay) ytModalOverlay.addEventListener('click', closeYtVideoModal);

@@ -3,133 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TFG — Portfolio</title>
+    <title>AVALON — Brand Guide</title>
+
     <link rel="stylesheet" href="style/style.css">
     <script src="scrpt/script.js" defer></script>
 </head>
-<body class="tfg-page">
+<body class="tfg-body">
+ <div class="menu-overlay" id="menuOverlay"></div>
 
-    <div class="menu-overlay" id="menuOverlay"></div>
+<aside class="side-menu" id="sideMenu">
+    <div class="side-menu-header">
+        <span class="side-menu-title">LIBRARY</span>
+        <button class="close-btn" id="closeMenuBtn" aria-label="Cerrar Menú">(Close)</button>
+    </div>
 
-    <aside class="side-menu" id="sideMenu">
-        <div class="side-menu-header">
-            <span class="side-menu-title">LIBRARY</span>
-            <button class="close-btn" id="closeMenuBtn" aria-label="Cerrar Menú">(Close)</button>
-        </div>
-
-        <ul class="side-menu-list">
-            <li><a href="index.html" class="menu-item">Index <span>&gt;</span></a></li>
-            <li><a href="proyectos.html" class="menu-item">Selected Works <span>&gt;</span></a></li>
-            <li><a href="3d.html" class="menu-item">3D Work <span>&gt;</span></a></li>
-            <li><a href="editorial.html" class="menu-item">Editorial Design <span>&gt;</span></a></li>
-            <li><a href="graphics.html" class="menu-item">Graphics <span>&gt;</span></a></li>
-            <li><a href="photography.html" class="menu-item">Photography <span>&gt;</span></a></li>
-            <li><a href="cv.html" class="menu-item">Curriculum / About <span>&gt;</span></a></li>
-            <li><a href="contacto.html" class="menu-item">Contacto <span>&gt;</span></a></li>
-        </ul>
-    </aside>
+    <ul class="side-menu-list">
+        <li><a href="index.html" class="menu-item">Index <span>&gt;</span></a></li>
+        <li><a href="proyectos.html" class="menu-item">Selected Works <span>&gt;</span></a></li>
+        <li><a href="3d.html" class="menu-item">3D Work <span>&gt;</span></a></li>
+        <li><a href="editorial.html" class="menu-item">Editorial Design <span>&gt;</span></a></li>
+        <li><a href="graphics.html" class="menu-item">Graphics <span>&gt;</span></a></li>
+        <li><a href="photography.html" class="menu-item">Photography <span>&gt;</span></a></li>
+        <li><a href="cv.html" class="menu-item">Curriculum / About <span>&gt;</span></a></li>
+        <li><a href="contacto.html" class="menu-item">Contacto <span>&gt;</span></a></li>
+    </ul>
+</aside>
 
     <nav class="navbar">
         <button class="nav-link menu-trigger" id="openMenuBtn">Menu</button>
         <a href="proyectos.html" class="nav-link active">Proyectos</a>
+        <a href="index.html" class="nav-symbol" aria-label="Inicio">☾</a>
         <a href="cv.html" class="nav-link">CV</a>
         <a href="contacto.html" class="nav-link">Contacto</a>
     </nav>
 
-    <main class="tfg-editorial-container">
-        <section class="tfg-spread-v2">
+    <!-- CONTENEDOR PRINCIPAL TFG PARA EVITAR CONFLICTOS -->
+    <div class="tfg-container">
 
-            <div class="tfg-col">
-                <div class="text-group">
-                    <h3 class="tfg-title">Añade algo de texto</h3>
-                    <p class="tfg-paragraph">
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
-                    </p>
-                </div>
+  
 
-                <div class="media-box box-square-large">
-                    <img src="img/avalon/fotos/foto editada armadura 2 (1).png" alt="Imagen 1" class="media-content">
+
+        <!-- SECCIÓN 1: CUBIERTA AVALON -->
+        <section class="tfg-section tfg-section-cover">
+            <h1 class="tfg-cover-title">AVALON</h1>
+            <p class="tfg-cover-subtitle">Trabajo Fin de Grado — Guía de Identidad Visual</p>
+        </section>
+
+        <!-- SECCIÓN 2: LOGOTIPO SECUNDARIO -->
+        <section class="tfg-section tfg-section-split">
+            <div class="tfg-col-left">
+                <div class="tfg-page-num">02</div>
+                <h2 class="tfg-section-title">Sobre Avalon</h2>
+                <p class="tfg-section-desc">
+                    El nombre Avalon se toma de la isla mítica presente en la leyenda artúrica, donde la dama del lago entrega “Excalibur” al rey Arturo. Como parte del storytelling de la marca, Avalon es ese lugar donde se ofrece una pieza única diseñada para ti. En este proyecto, el naming no se utiliza de forma literal, sino como un punto de partida conceptual. Es una reinterpretación que permite trasladar el mito a un contexto contemporáneo, alejándose de una estética medieval explícita.
+                </p>
+            </div>
+            <div class="tfg-col-right">
+                <div class="tfg-logo-display">avalon</div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: RETÍCULA Y MEDIDAS -->
+        <section class="tfg-section tfg-section-split">
+            <div class="tfg-col-left">
+                <div class="tfg-page-num">03</div>
+                <h2 class="tfg-section-title">Naming y Logo</h2>
+                <p class="tfg-section-desc">
+                    El logotipo de Avalon consiste exclusivamente en el nombre de la marca escrito 
+                    en una tipografía script (LTC Pabst Oldstyle) personalizada que simula trazos 
+                    de tinta fluida.
+                    Se trata de una mezcla equilibrada entre mayúsculas y minúsculas: la letra “A” 
+                    inicial es mayúscula y presenta espirales ornamentales sutiles en su remate supe￾rior, mientras que el resto de las letras (“valon”) están en minúsculas estilizadas. 
+                    El conjunto crea un aspecto orgánico, manuscrito y contemporáneo, como si 
+                    estuviera escrito con tinta.
+            </div>
+            <div class="tfg-col-right">
+                <div class="tfg-grid-box">
+                    <div class="tfg-grid-logo">avalon</div>
                 </div>
             </div>
+        </section>
 
-            <div class="tfg-col">
-                <div class="media-box box-vertical-main">
-                    <img src="img/avalon/fotos/_T7A7927.jpg" alt="Imagen 2" class="media-content">
-                </div>
+        <!-- SECCIÓN 4: PALETA DE COLOR CON ESTRELLAS -->
+        <section class="tfg-section tfg-section-split">
+            <div class="tfg-col-left">
+                <div class="tfg-page-num">04</div>
+                <h2 class="tfg-section-title">Brand Colours</h2>
+                <p class="tfg-section-desc">
+                    La paleta cromática de Avalon evoca tranquilidad y estructura. Las estrellas con distintas tipologías de puntas sintetizan la diversidad de elementos identitarios dentro del universo visual de la marca.
+                </p>
+            </div>
+            <div class="tfg-col-right">
+                <div class="tfg-star-palette">
+                    <!-- Estrella 1 -->
+                    <div class="tfg-star-item">
+                        <svg class="tfg-star-shape" viewBox="0 0 100 100">
+                            <polygon points="50,0 62,38 100,50 62,62 50,100 38,62 0,50 38,38" fill="#bcd3e6"/>
+                        </svg>
+                        <div class="tfg-color-info">
+                            <strong>WADDEN BLUE</strong><br>
+                            HEX #BCD3E6<br>
+                            RGB 188 211 230<br>
+                            CMYK 25 10 2 0
+                        </div>
+                    </div>
 
-                <div class="text-group">
-                    <h3 class="tfg-title">Añade algo de texto</h3>
-                    <p class="tfg-paragraph">
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ip
-                    </p>
-                </div>
+                    <!-- Estrella 2 -->
+                    <div class="tfg-star-item">
+                        <svg class="tfg-star-shape" viewBox="0 0 100 100">
+                            <polygon points="50,0 62,28 85,15 72,38 100,50 72,62 85,85 62,72 50,100 38,72 15,85 28,62 0,50 28,38 15,15 38,28" fill="#a89a8e"/>
+                        </svg>
+                        <div class="tfg-color-info">
+                            <strong>HARBOUR CLAY</strong><br>
+                            HEX #A89A8E<br>
+                            RGB 168 154 142<br>
+                            CMYK 30 31 35 10
+                        </div>
+                    </div>
 
-                <div class="media-box box-square-medium">
-                    <img src="img/avalon/fotos/_T7A7873.jpg" alt="Imagen 3" class="media-content">
+                    <!-- Estrella 3 -->
+                    <div class="tfg-star-item">
+                        <svg class="tfg-star-shape" viewBox="0 0 100 100">
+                            <polygon points="50,0 63,38 100,38 69,59 82,100 50,75 18,100 31,59 0,38 37,38" fill="#621217"/>
+                        </svg>
+                        <div class="tfg-color-info">
+                            <strong>MAROON</strong><br>
+                            HEX #621217<br>
+                            RGB 98 18 23<br>
+                            CMYK 33 100 84 52
+                        </div>
+                    </div>
+
+                    <!-- Estrella 4 -->
+                    <div class="tfg-star-item">
+                        <svg class="tfg-star-shape" viewBox="0 0 100 100">
+                            <polygon points="50,0 63,25 93,25 75,50 93,75 63,75 50,100 37,75 7,75 25,50 7,25 37,25" fill="#f7f6ed"/>
+                        </svg>
+                        <div class="tfg-color-info">
+                            <strong>SALTED CREAM</strong><br>
+                            HEX #F7F6ED<br>
+                            RGB 247 246 237<br>
+                            CMYK 4 3 9 0
+                        </div>
+                    </div>
+
+                    <!-- Estrella 5 -->
+                    <div class="tfg-star-item">
+                        <svg class="tfg-star-shape" viewBox="0 0 100 100">
+                            <polygon points="50,0 56,21 75,7 69,28 93,25 79,42 100,50 79,58 93,75 69,72 75,93 56,79 50,100 44,79 25,93 31,72 7,75 21,58 0,50 21,42 7,25 31,28 25,7 44,21" fill="#f1e4b0"/>
+                        </svg>
+                        <div class="tfg-color-info">
+                            <strong>LEMON ICING</strong><br>
+                            HEX #F1E4B0<br>
+                            RGB 241 228 176<br>
+                            CMYK 6 7 35 0
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="tfg-col offset-down">
-                <div class="text-group">
-                    <h3 class="tfg-title">Añade algo de texto</h3>
+        <!-- SECCIÓN 5: FOTO CON EFECTO CONGELADO INTERACTIVO -->
+        <section class="tfg-section tfg-section-split tfg-section-frost">
+            <div class="tfg-col-left tfg-frost-container" id="frostContainer">
+                <!-- Imagen de prueba directa (Sustituye 'src' por 'img/mi-foto.jpg' cuando quieras) -->
+                <img src="img/avalon/fotos/_T7A7745.jpg" alt="Fotografía Avalon" class="tfg-frost-img" id="frostImg">
+                <canvas id="frostCanvas"></canvas>
+            </div>
+
+            <div class="tfg-col-right tfg-frost-info-col">
+                <div class="tfg-page-num-top">05</div>
+                
+                <div class="tfg-frost-swatch-box">
+                    <div class="tfg-color-swatch"></div>
+                    <div class="tfg-color-details-vertical">
+                        <span class="tfg-swatch-title">VISTA BLUE</span>
+                        <span class="tfg-swatch-subtitle">COLOUR SWATCH</span>
+                        <span class="tfg-swatch-code">#7E98BD</span>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="media-box box-vertical-video">
-                    <video id="tfgVideo" autoplay loop muted playsinline class="media-content">
-                        <source src="img/otros/Martin.Elena_Avalon_Spot.Reel.mp4" type="video/mp4">
-                    </video>
-                    
-                    <button class="volume-btn" id="volumeToggleBtn" aria-label="Activar o desactivar sonido">
-                        <svg id="muteIcon" class="volume-icon" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="M3.63 3.63a.996.996 0 0 0 0 1.41L7.29 8.7 7 9H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h3l3.29 3.29c.63.63 1.71.18 1.71-.71v-4.17l4.18 4.18c-.49.37-1.02.68-1.6.91-.36.15-.58.53-.58.92 0 .61.59 1.07 1.18.85.88-.34 1.69-.82 2.4-1.42l1.38 1.38a.996.996 0 1 0 1.41-1.41L5.05 3.63a.996.996 0 0 0-1.42 0zM19 12c0 .82-.15 1.61-.41 2.34l1.53 1.53c.56-1.17.88-2.48.88-3.87 0-3.83-2.4-7.11-5.78-8.4-.59-.23-1.22.23-1.22.86 0 .41.26.77.65.92C17.3 6.47 19 8.98 19 12zm-3.5 0c0-.88-.36-1.68-.93-2.27l1.47-1.47B7.9 6.8 17.9 9.25 17.9 12c0 1.25-.43 2.4-1.15 3.32l-1.46-1.46c.44-.5.71-1.17.71-1.86z"/>
-                        </svg>
-                        <svg id="soundIcon" class="volume-icon hidden" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-                        </svg>
+        <!-- SECCIÓN 06: HERO CON BOTÓN INTERACTIVO DE ESTRELLAS Y VÍDEO -->
+        <section class="tfg-section tfg-hero-section">
+            <img src="https://picsum.photos/id/1059/1920/1080" alt="Avalon Brand Film Background" class="tfg-hero-bg">
+            <div class="tfg-hero-overlay"></div>
+            <div class="tfg-hero-content">
+                <div class="tfg-page-num-hero">06</div>
+                <h2 class="tfg-hero-title">AVALON BRAND FILM</h2>
+                
+                <button class="tfg-star-btn" data-video-id="dQw4w9WgXcQ">
+                    <svg class="tfg-btn-star star-tl" viewBox="0 0 100 100"><polygon points="50,0 62,38 100,50 62,62 50,100 38,62 0,50 38,38"/></svg>
+                    <svg class="tfg-btn-star star-tr" viewBox="0 0 100 100"><polygon points="50,0 62,38 100,50 62,62 50,100 38,62 0,50 38,38"/></svg>
+                    <span class="tfg-btn-text">REPRODUCIR VÍDEO</span>
+                    <svg class="tfg-btn-star star-bl" viewBox="0 0 100 100"><polygon points="50,0 62,38 100,50 62,62 50,100 38,62 0,50 38,38"/></svg>
+                    <svg class="tfg-btn-star star-br" viewBox="0 0 100 100"><polygon points="50,0 62,38 100,50 62,62 50,100 38,62 0,50 38,38"/></svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 07: APLICACIONES EDITORIALES (TEXTO Y PAR DE IMÁGENES) -->
+        <section class="tfg-section tfg-section-split">
+            <div class="tfg-col-left">
+                <div class="tfg-page-num">07</div>
+                <h2 class="tfg-section-title">Editorial Applications</h2>
+                <p class="tfg-section-desc">
+                    Las piezas impresas y soportes editoriales aplican composiciones asimétricas con amplios espacios en blanco, priorizando el descanso visual y resaltando la riqueza táctil del papel.
+                </p>
+            </div>
+            <div class="tfg-col-right">
+                <div class="tfg-image-pair-container">
+                    <img src="https://picsum.photos/id/1050/800/1000" alt="Editorial App 1" class="tfg-pair-img tfg-pair-img-back">
+                    <img src="https://picsum.photos/id/1062/800/1000" alt="Editorial App 2" class="tfg-pair-img tfg-pair-img-front">
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 08: SHOWCASE CAMPAÑA CON RECTÁNGULO FLOTANTE -->
+        <section class="tfg-section tfg-campaign-section">
+            <img src="https://picsum.photos/id/1069/1920/1080" alt="Avalon Campaign Visual" class="tfg-campaign-bg">
+            <div class="tfg-campaign-content">
+                <div class="tfg-floating-card">
+                    <div class="tfg-page-num-card">08</div>
+                    <h2 class="tfg-card-title">Campaign Visuals</h2>
+                    <p class="tfg-card-desc">
+                        Explora la narrativa audiovisual desarrollada para la campaña global de Avalon. Un recorrido a través de la atmósfera, sonido y ritmo visual.
+                    </p>
+                    <button class="tfg-card-video-btn" data-video-id="L_LUpnjgPso">
+                        <span class="tfg-play-icon">▲</span> VER CAMPAÑA
                     </button>
                 </div>
             </div>
-
         </section>
-    </main>
 
-    <div id="lightboxModal" class="lightbox-modal">
-        <span id="lightboxClose" class="lightbox-close">&times;</span>
-        <img id="lightboxImage" class="lightbox-content" src="" alt="Ampliación">
     </div>
 
-    <footer class="site-footer">
-        <div class="bottom-left-info">
-            <span class="info-label">TRABAJO DE FIN DE GRADO</span><br>
-            <a href="mailto:tuemail@ejemplo.com">tuemail@ejemplo.com</a>
+    <!-- MODAL DE VÍDEO YOUTUBE -->
+    <div class="tfg-video-modal" id="videoModal">
+        <div class="tfg-modal-overlay" id="modalOverlay"></div>
+        <div class="tfg-modal-content">
+            <button class="tfg-close-modal" id="closeModalBtn">✕ Cerrar</button>
+            <div class="tfg-iframe-container">
+                <iframe id="videoIframe" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
         </div>
-        <div class="bottom-right-info">
-            <p class="copyright-text">&copy; 2026 TODOS LOS DERECHOS RESERVADOS</p>
-        </div>
-    </footer>
+    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const video = document.getElementById('tfgVideo');
-            const volumeBtn = document.getElementById('volumeToggleBtn');
-            const muteIcon = document.getElementById('muteIcon');
-            const soundIcon = document.getElementById('soundIcon');
+    </div>
 
-            if (video && volumeBtn) {
-                volumeBtn.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Evita interferir con el Lightbox si existiera
-                    if (video.muted) {
-                        video.muted = false;
-                        muteIcon.classList.add('hidden');
-                        soundIcon.classList.remove('hidden');
-                    } else {
-                        video.muted = true;
-                        muteIcon.classList.remove('hidden');
-                        soundIcon.classList.add('hidden');
-                    }
-                });
-            }
-        });
-    </script>
 </body>
 </html>
