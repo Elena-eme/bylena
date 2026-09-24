@@ -1450,7 +1450,7 @@ body.index-page {
     position: relative;
     cursor: zoom-in;
     overflow: hidden;
-    aspect-ratio: 3 / 4;
+    
 }
 
 .image-strip-seamless .gallery-item img {
